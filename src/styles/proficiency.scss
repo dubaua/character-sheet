@@ -1,0 +1,18 @@
+.proficiency {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 500;
+
+  &__value {
+    width: 16px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url('../icons/proficiency.svg');
+  }
+}

@@ -1,0 +1,10 @@
+$paper-width: 297mm;
+$paper-field: 0.5in;
+$column-gap: 16px;
+$column-count: 6;
+
+@mixin font-small {
+  font-size: 6.2px;
+  line-height: 8px;
+  transform: translate(0, 0.6px);
+}

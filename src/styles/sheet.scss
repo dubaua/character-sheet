@@ -1,0 +1,42 @@
+@use 'sass:math';
+@import './variables.scss';
+
+.sheet {
+  width: $paper-width;
+  margin: 10mm;
+  padding: 12px $paper-field;
+  box-shadow: 0 5px 15px 5px rgb(183 168 116 / 18%);
+  @media print {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+  $ruler-y-size: 4px;
+  $ruler-color: rgba(255 0 0 / 10%);
+
+  &__contents {
+    height: 100%;
+    display: flex;
+    margin-left: $column-gap * -0.5;
+    margin-right: $column-gap * -0.5;
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      transparent calc(#{$ruler-y-size} - 1px),
+      $ruler-color calc(#{$ruler-y-size} - 1px),
+      $ruler-color $ruler-y-size
+    );
+    background-size: 100% $ruler-y-size;
+    background-repeat: repeat-y;
+    @media print {
+      background: none;
+    }
+  }
+
+  &__column {
+    padding-left: $column-gap * 0.5;
+    padding-right: $column-gap * 0.5;
+    flex-basis: math.div(1, $column-count) * 100%;
+    max-width: math.div(1, $column-count) * 100%;
+  }
+}

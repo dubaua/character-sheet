@@ -1,0 +1,44 @@
+@import './variables.scss';
+
+.resource {
+  &__kind {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4px;
+    font-size: 8px;
+    line-height: 12px;
+    margin-bottom: 2px;
+  }
+
+  &__label {
+    font-weight: 500;
+    margin-right: 0.38em;
+  }
+
+  &__group {
+    display: flex;
+    align-self: start;
+    margin-right: 0.38em;
+  }
+
+  &__group-label {
+    padding-right: 0.38em;
+  }
+
+  &__box {
+    box-sizing: content-box;
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-top: 2.5px;
+    border: 0.8px solid;
+    &:not(:first-child) {
+      border-left: 0;
+    }
+  }
+
+  &__boxes {
+     vertical-align: top;
+     line-height: 0;
+  }
+}

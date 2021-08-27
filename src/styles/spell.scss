@@ -1,0 +1,30 @@
+@import './variables.scss';
+
+.spell {
+  margin-top: 16px;
+  margin-bottom: 10px;
+  &__item {
+    display: flex;
+    margin-top: 4px;
+    font-size: 8px;
+    line-height: 12px;
+  } 
+
+  &__label {
+    font-weight: 500;
+  }
+
+  &__level {
+    &:not(:empty) {
+      &:before {
+        content: '–';
+        margin-left: 0.38em;
+        margin-right: 0.38em;
+      }
+    }
+  }
+
+  &__note {
+    margin-left: auto;
+  }
+}

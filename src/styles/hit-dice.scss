@@ -1,0 +1,39 @@
+@use 'sass:math';
+
+.hit-dice {
+  $die-size: 11.55px;
+  $die-border: 1px;
+  &__row {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    flex-direction: column-reverse;
+    height: 33px;
+    width: $die-size * 10;
+    margin-left: auto;
+    transform-origin: right bottom;
+    transform: translate(0, #{-$die-size}) rotate(-45deg);
+  }
+
+  &__die {
+    display: block;
+    width: $die-size;
+    height: $die-size;
+    border: 1px solid;
+    line-height: $die-size;
+    font-size: 8px;
+    text-align: center;
+
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        $shift-y: if(math.div($i, 2) == floor(math.div($i, 2)), 1px, 0);
+        $shift-x: floor(math.div($i - 1, 2));
+        $shift-step: -$shift-x * ($die-size - 1);
+        transform: translate(#{$shift-x}px, #{$shift-step + $shift-y});
+      }
+    }
+
+    &--disabled {
+      color: #ccc;
+    }
+  }
+}

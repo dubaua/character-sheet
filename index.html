@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/styles/main.scss" />
+  </head>
+  <body>
+    <div class="sheet">
+      <div class="sheet__contents">
+        <div class="sheet__column">
+          <h1 class="title">
+            <span data-name></span>&nbsp;&mdash;
+            <span data-class></span>
+            <span data-level>0</span>
+          </h1>
+          <div class="skill skill--proficiency">
+            <div class="skill__title">Proficiency bonus</div>
+            <div class="skill__modifier skill__modifier--proficiency" data-proficiency>0</div>
+          </div>
+          <div data-abilities></div>
+          <div class="typography" style="margin-top: -1px">
+            <h1>Other Proficiencies</h1>
+            <p style="margin-top: 9px" data-other-proficiencies></p>
+          </div>
+        </div>
+        <div class="sheet__column">
+          <h1 class="extender archetype-alignment">
+            <span class="archetype" data-archetype></span>
+            <span data-alignment></span>
+          </h1>
+          <div class="icons">
+            <div class="icons__item">
+              <div class="icons__label icons__label--perception">Passive<br />Perception</div>
+              <svg class="icons__svg" viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.4091 15.3333C13.2143 16.2438 13.1111 17.194 13.1111 18.1712C13.1111 24.8881 17.9862 30.3333 24 30.3333C30.0138 30.3333 34.8889 24.8881 34.8889 18.1712C34.8889 17.194 34.7857 16.2438 34.5909 15.3333M45 20.7097C45 19.4194 35.8447 12 24 12C12.1553 12 3 19.4194 3 20.7097C3 22 12.1553 32 24 32C35.8447 32 45 22 45 20.7097Z"
+                  class="icons__path"
+                />
+              </svg>
+              <div class="icons__value icons__value--perception" data-perception>0</div>
+            </div>
+            <div class="icons__item">
+              <div class="icons__label">Armor Class</div>
+              <svg class="icons__svg" viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10.2 14.4091C10.6878 26.9823 14.3034 32.1364 24.2 36C34.0965 32.1364 37.7121 26.9823 38.2 14.4091C35.3181 13.4041 34.3428 11.9141 34.0965 8.72727C30.7061 6.9292 27.0965 6 24.2 6C21.3034 6 17.6938 6.9292 14.3034 8.72727C14.0571 11.9141 13.0818 13.4041 10.2 14.4091Z"
+                  class="icons__path"
+                />
+              </svg>
+              <div class="icons__value icons__value--armor" data-armor>0</div>
+            </div>
+            <div class="icons__item">
+              <div class="icons__label">Hit Points</div>
+              <svg class="icons__svg" viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9.00396 14.7434C8.76965 22.2212 19.0013 29.6224 24 32C28.9987 29.6224 39.2304 22.2212 38.996 14.7434C38.996 10.6018 36.3014 6 31.6152 6C26.9289 6 24 10.6018 24 10.6018C24 10.6018 21.0711 6 16.3848 6C11.6986 6 9.00396 10.6018 9.00396 14.7434Z"
+                  class="icons__path"
+                />
+                <path
+                  d="M14.0011 34.354C13.9386 36.3673 16.667 38.3599 18 39C19.333 38.3599 22.0614 36.3673 21.9989 34.354C21.9989 33.2389 21.2804 32 20.0307 32C18.781 32 18 33.2389 18 33.2389C18 33.2389 17.219 32 15.9693 32C14.7196 32 14.0011 33.2389 14.0011 34.354Z"
+                  class="icons__path"
+                />
+                <path
+                  d="M6.40471 28.48C6.34223 30.4932 9.07067 32.4859 10.4037 33.126C11.7366 32.4859 14.4651 30.4932 14.4026 28.48C14.4026 27.3649 13.684 26.126 12.4344 26.126C11.1847 26.126 10.4037 27.3649 10.4037 27.3649C10.4037 27.3649 9.62261 26.126 8.37294 26.126C7.12327 26.126 6.40471 27.3649 6.40471 28.48Z"
+                  class="icons__path"
+                />
+                <path
+                  d="M0.900164 21.0945C0.837682 23.1077 3.56613 25.1004 4.89911 25.7405C6.23209 25.1004 8.96054 23.1077 8.89805 21.0945C8.89805 19.9794 8.17949 18.7405 6.92982 18.7405C5.68015 18.7405 4.89911 19.9794 4.89911 19.9794C4.89911 19.9794 4.11806 18.7405 2.86839 18.7405C1.61872 18.7405 0.900164 19.9794 0.900164 21.0945Z"
+                  class="icons__path"
+                />
+                <path
+                  d="M26.9699 35.3745C26.9699 35.5447 26.7499 35.9009 26.626 36.2416C26.613 36.2773 26.6021 36.3135 26.5931 36.35M26.5931 36.35C26.514 36.67 26.5841 37.0151 26.7499 37.2792C26.9971 37.6729 27.7256 37.7903 27.7939 37.9472C27.8436 38.0614 27.739 38.4233 28.0594 38.8353C28.3158 39.1649 29.1811 39.215 29.584 39.215C29.9868 39.215 30.8522 39.1649 31.1086 38.8353C31.429 38.4233 31.3244 38.0614 31.3741 37.9472C31.4424 37.7903 32.1709 37.6729 32.4181 37.2792C32.5839 37.0151 32.654 36.67 32.5749 36.35M26.5931 36.35C26.4234 36.1074 26.084 35.3898 26.084 34.4606C26.084 33.2991 26.8583 31.5801 29.584 31.5801C32.3096 31.5801 33.084 33.2991 33.084 34.4606C33.084 35.3898 32.7446 36.1074 32.5749 36.35M32.084 35.3745C32.084 35.5447 32.4181 35.9009 32.5419 36.2416C32.5549 36.2773 32.5659 36.3135 32.5749 36.35"
+                  class="icons__path"
+                />
+                <path
+                  d="M30.0273 36.5895C30.2498 37.0423 30.7557 37.2607 31.1572 37.0772C31.5587 36.8938 31.7037 36.378 31.4811 35.9252C31.2012 35.6091 30.7121 35.3514 30.3512 35.4374C29.9498 35.6208 29.8047 36.1366 30.0273 36.5895Z"
+                  fill="black"
+                />
+                <path
+                  d="M29.1438 36.5857C28.9212 37.0385 28.4153 37.2569 28.0138 37.0735C27.6124 36.89 27.4673 36.3742 27.6899 35.9214C27.939 35.599 28.4526 35.4184 28.8198 35.4336C29.2213 35.6171 29.3663 36.1329 29.1438 36.5857Z"
+                  fill="black"
+                />
+                <path
+                  d="M29.1944 38.3687C29.3765 38.3687 29.5333 38.1991 29.589 38.0772C29.6446 38.1991 29.8015 38.3687 29.9836 38.3687C30.1657 38.3687 30.2214 38.2126 30.2264 38.1345C30.2366 38.0175 30.1483 37.7186 29.9836 37.5199C29.8606 37.3714 29.589 37.2232 29.589 37.2232C29.589 37.2232 29.3174 37.3714 29.1944 37.5199C29.0297 37.7186 28.9414 38.0175 28.9515 38.1345C28.9566 38.2126 29.0122 38.3687 29.1944 38.3687Z"
+                  fill="black"
+                />
+                <path
+                  d="M34.3058 29.8784C34.3058 30.0486 34.0858 30.4048 33.9619 30.7455C33.9489 30.7812 33.938 30.8174 33.929 30.8539M33.929 30.8539C33.8499 31.1739 33.92 31.519 34.0858 31.7831C34.333 32.1768 35.0615 32.2942 35.1298 32.4512C35.1795 32.5653 35.0749 32.9272 35.3953 33.3392C35.6517 33.6688 36.517 33.7189 36.9199 33.7189C37.3227 33.7189 38.1881 33.6688 38.4445 33.3392C38.7649 32.9272 38.6603 32.5653 38.71 32.4512C38.7783 32.2942 39.5068 32.1768 39.754 31.7831C39.9198 31.519 39.9899 31.1739 39.9108 30.8539M33.929 30.8539C33.7593 30.6113 33.4199 29.8937 33.4199 28.9645C33.4199 27.803 34.1942 26.084 36.9199 26.084C39.6456 26.084 40.4199 27.803 40.4199 28.9645C40.4199 29.8937 40.0805 30.6113 39.9108 30.8539M39.4199 29.8784C39.4199 30.0486 39.754 30.4048 39.8779 30.7455C39.8908 30.7812 39.9018 30.8174 39.9108 30.8539"
+                  class="icons__path"
+                />
+                <path
+                  d="M37.3632 31.0934C37.5857 31.5462 38.0916 31.7646 38.4931 31.5811C38.8946 31.3977 39.0396 30.8819 38.817 30.4291C38.5371 30.113 38.048 29.8553 37.6871 29.9413C37.2857 30.1247 37.1406 30.6405 37.3632 31.0934Z"
+                  fill="black"
+                />
+                <path
+                  d="M36.4797 31.0896C36.2571 31.5424 35.7512 31.7608 35.3498 31.5774C34.9483 31.3939 34.8032 30.8781 35.0258 30.4253C35.275 30.1029 35.7885 29.9224 36.1557 29.9375C36.5572 30.121 36.7022 30.6368 36.4797 31.0896Z"
+                  fill="black"
+                />
+                <path
+                  d="M36.5303 32.8726C36.7124 32.8726 36.8692 32.703 36.9249 32.5811C36.9805 32.703 37.1374 32.8726 37.3195 32.8726C37.5016 32.8726 37.5573 32.7165 37.5624 32.6384C37.5725 32.5214 37.4842 32.2225 37.3195 32.0238C37.1965 31.8754 36.9249 31.7271 36.9249 31.7271C36.9249 31.7271 36.6533 31.8754 36.5303 32.0238C36.3656 32.2225 36.2773 32.5214 36.2874 32.6384C36.2925 32.7165 36.3481 32.8726 36.5303 32.8726Z"
+                  fill="black"
+                />
+                <path
+                  d="M40.3058 22.7945C40.3058 22.9646 40.0858 23.3208 39.9619 23.6615C39.9489 23.6972 39.938 23.7334 39.929 23.7699M39.929 23.7699C39.8499 24.09 39.92 24.435 40.0858 24.6991C40.333 25.0928 41.0615 25.2102 41.1298 25.3672C41.1795 25.4814 41.0749 25.8433 41.3953 26.2553C41.6517 26.5849 42.517 26.635 42.9199 26.635C43.3227 26.635 44.1881 26.5849 44.4445 26.2553C44.7649 25.8433 44.6603 25.4814 44.71 25.3672C44.7783 25.2102 45.5068 25.0928 45.754 24.6991C45.9198 24.435 45.9899 24.09 45.9108 23.7699M39.929 23.7699C39.7593 23.5273 39.4199 22.8097 39.4199 21.8805C39.4199 20.719 40.1942 19 42.9199 19C45.6456 19 46.4199 20.719 46.4199 21.8805C46.4199 22.8097 46.0805 23.5273 45.9108 23.7699M45.4199 22.7945C45.4199 22.9646 45.754 23.3208 45.8779 23.6615C45.8908 23.6972 45.9018 23.7334 45.9108 23.7699"
+                  class="icons__path"
+                />
+                <path
+                  d="M43.3632 24.0094C43.5857 24.4622 44.0916 24.6806 44.4931 24.4971C44.8946 24.3137 45.0396 23.7979 44.817 23.3451C44.5371 23.029 44.048 22.7713 43.6871 22.8573C43.2857 23.0408 43.1406 23.5565 43.3632 24.0094Z"
+                  fill="black"
+                />
+                <path
+                  d="M42.4797 24.0056C42.2571 24.4584 41.7512 24.6768 41.3498 24.4934C40.9483 24.3099 40.8032 23.7941 41.0258 23.3413C41.275 23.0189 41.7885 22.8384 42.1557 22.8535C42.5572 23.037 42.7022 23.5528 42.4797 24.0056Z"
+                  fill="black"
+                />
+                <path
+                  d="M42.5303 25.7886C42.7124 25.7886 42.8692 25.619 42.9249 25.4971C42.9805 25.619 43.1374 25.7886 43.3195 25.7886C43.5016 25.7886 43.5573 25.6325 43.5624 25.5544C43.5725 25.4374 43.4842 25.1385 43.3195 24.9398C43.1965 24.7914 42.9249 24.6432 42.9249 24.6432C42.9249 24.6432 42.6533 24.7914 42.5303 24.9398C42.3656 25.1385 42.2773 25.4374 42.2874 25.5544C42.2925 25.6325 42.3481 25.7886 42.5303 25.7886Z"
+                  fill="black"
+                />
+              </svg>
+              <div class="icons__value icons__value--max-health" data-hp>0</div>
+            </div>
+            <div class="icons__item">
+              <div class="icons__label">Speed</div>
+              <svg class="icons__svg" viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M39.3235 6.38126L18.4237 15.2112C16.4952 16.0729 13.8011 17.5205 14.516 20.0577M38.203 15.2524L27.6149 22.125M18.6516 12.7727L34.2749 5.01569M26.1314 15.7465L45 5.95256M41.9864 10.316L28.0262 18.2119M32.9143 22.3693L26.5031 26.7898M33.8497 24.7976L24.6889 31.5877L19.3414 33.7554L18.848 32.4745L14.6789 34.9833H3.03126C3.03126 34.9833 2.78507 31.6535 3.67449 30.7411C4.5639 29.8287 11.0956 28.4608 12.3684 24.2188C13.5131 20.404 9.71398 15.7465 9.71398 15.7465L26.7112 4.98328"
+                  class="icons__path"
+                />
+              </svg>
+              <div class="icons__value icons__value--speed" data-speed>0</div>
+            </div>
+            <div class="icons__item">
+              <div class="icons__label">Initiative</div>
+              <svg class="icons__svg" viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M39.7726 23.8639C40.5822 22.1419 39.0613 21.5148 37.8559 21.4251C35.0421 20.8247 29.7023 28.7478 30.6942 21.6036C31.1804 19.5746 32.0038 17.3045 32.5088 15.1158C32.949 13.3895 33.8305 10.8959 32.4838 9.56391C30.8854 8.59362 30.1079 9.86807 29.6159 12.3846C28.9572 14.4722 28.6103 16.1616 28.0842 17.5168C27.0453 19.4878 26.9618 17.1498 26.748 15.7189C26.7233 13.7028 26.6855 11.4892 26.51 9.20728C26.3094 6.43886 25.6629 4.29871 23.5259 5.21505C21.8457 6.37383 22.5816 10.187 22.797 11.9641C23.0358 14.1843 23.7585 18.6093 22.5004 18.4388C21.4009 18.1336 21.4021 16.7548 20.9302 15.813C20.0697 13.3141 19.7 10.7518 18.7416 8.4767C17.6868 6.65291 15.727 8.01041 15.8145 9.80532C16.1002 12.0476 16.7509 14.1722 17.5987 16.8684C17.7998 17.824 19.2286 19.9473 17.6761 19.515C16.0284 17.848 14.5752 15.299 13.533 13.8657C12.7338 12.8032 11.0676 11.0704 10.0756 12.8151C9.68511 14.6525 10.8874 16.5347 11.859 18.3193C12.7604 20.1285 14.7371 21.7985 14.7779 24.0687C14.7779 27.1153 17.0267 33.0676 18.7416 34.0978C20.4564 35.128 28.0842 35.7003 30.1707 33.4146C32.2572 31.129 33.4665 30.1001 34.8707 28.2587C36.6469 26.9523 37.3639 24.9574 39.7726 23.8639Z"
+                  class="icons__path"
+                />
+              </svg>
+              <div class="icons__value icons__value--initiative" data-initiative>0</div>
+            </div>
+            <div class="icons__item">
+              <div class="icons__label">Inspiration</div>
+              <svg class="icons__svg" viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M25.16 8.98241C24.6469 10.0259 24.2879 12.4237 24.0676 14.8104C24.0568 14.928 23.8803 14.9355 23.8599 14.8192C23.4858 12.6827 22.9644 10.2934 22.3861 9.36757C21.242 7.53622 19.2613 6.6382 16.9718 7.74623C15.3618 8.52539 15.2013 9.87979 15.0862 10.8517C15.0376 11.2619 14.997 11.6039 14.859 11.8058C14.6946 12.0462 14.2317 12.0627 13.6402 12.0837C12.5582 12.1223 11.046 12.1762 10.1457 13.6446C8.75318 15.9156 9.95183 18.4458 11.75 19.4996C12.5269 19.9549 15.5253 20.5963 16.87 20.8684C16.9827 20.8912 16.9745 21.0622 16.8603 21.076C15.6621 21.2212 13.2122 21.5498 12.5474 21.8823C10.6241 22.8444 9.53743 24.7397 10.3995 27.1477C11.0058 28.8409 12.3264 29.1388 13.274 29.3526C13.674 29.4428 14.0075 29.518 14.1928 29.6769C14.4134 29.866 14.3829 30.3319 14.3439 30.9271C14.2725 32.0161 14.1727 33.5379 15.531 34.5892C17.6318 36.2152 20.2505 35.2692 21.4724 33.5726C22.1593 32.619 23.0739 29.8549 23.537 27.9274C24 26 25 26.5 25.2603 27.4734C25.5206 28.4468 26.8221 32.2951 27.5715 33.2103C28.9381 34.8794 31.0164 35.5152 33.1468 34.1216C34.645 33.1417 34.6326 31.7777 34.6237 30.799C34.6199 30.3859 34.6168 30.0414 34.7281 29.8234C34.8607 29.5638 35.3178 29.4879 35.9017 29.3909C36.97 29.2134 38.463 28.9654 39.17 27.3932C40.2634 24.9616 38.7541 22.6062 36.8372 21.7924C35.7244 21.3201 33.1575 21.1079 30.6783 21.0426C30.5605 21.0395 30.5412 20.8648 30.6555 20.8363C32.7307 20.3199 35.0266 19.6435 35.8966 19.0062C37.6335 17.734 38.3909 15.6823 37.142 13.4533C36.2637 11.8858 34.9123 11.8144 33.9426 11.7632C33.5333 11.7416 33.192 11.7235 32.9829 11.5981C32.734 11.4488 32.687 10.9843 32.6268 10.3908C32.5168 9.30514 32.363 7.78794 30.8496 6.97998C28.509 5.7304 26.0838 7.10398 25.16 8.98241Z"
+                  class="icons__path"
+                />
+                <path
+                  d="M24.9743 27.1581C25.0617 26.8961 24.9201 26.613 24.6581 26.5257C24.3961 26.4383 24.113 26.5799 24.0257 26.8419L24.9743 27.1581ZM28.4019 37.4903C28.6727 37.5444 28.9361 37.3688 28.9903 37.0981C29.0444 36.8273 28.8688 36.5639 28.5981 36.5097L28.4019 37.4903ZM24.5 27C24.0257 26.8419 24.0255 26.8422 24.0254 26.8426C24.0254 26.8427 24.0253 26.843 24.0252 26.8433C24.025 26.8437 24.0249 26.8442 24.0247 26.8448C24.0244 26.8458 24.024 26.8469 24.0236 26.8482C24.0228 26.8506 24.0219 26.8535 24.0209 26.8567C24.0189 26.8631 24.0166 26.871 24.0139 26.8805C24.0085 26.8993 24.0018 26.9243 23.9943 26.9556C23.9793 27.0182 23.961 27.1059 23.9433 27.2208C23.908 27.4507 23.875 27.7887 23.875 28.25C23.875 29.1724 24.0067 30.5884 24.5149 32.6213L25.4851 32.3787C24.9933 30.4116 24.875 29.0776 24.875 28.25C24.875 27.8363 24.9045 27.5493 24.9317 27.3729C24.9453 27.2847 24.9582 27.224 24.9667 27.189C24.9709 27.1714 24.9739 27.1602 24.9754 27.1552C24.9761 27.1527 24.9764 27.1517 24.9763 27.1522C24.9762 27.1524 24.976 27.153 24.9757 27.154C24.9755 27.1545 24.9753 27.1551 24.9751 27.1558C24.975 27.1561 24.9749 27.1565 24.9747 27.1569C24.9747 27.1571 24.9746 27.1574 24.9746 27.1575C24.9744 27.1578 24.9743 27.1581 24.5 27ZM24.5149 32.6213C25.0391 34.7181 25.9687 35.9373 26.8049 36.6341C27.2201 36.9801 27.6052 37.1914 27.8933 37.3175C28.0373 37.3805 28.1571 37.4222 28.2445 37.4489C28.2882 37.4622 28.3238 37.4718 28.3504 37.4785C28.3637 37.4818 28.3747 37.4844 28.3833 37.4863C28.3876 37.4873 28.3914 37.4881 28.3945 37.4887C28.396 37.4891 28.3974 37.4894 28.3987 37.4896C28.3993 37.4898 28.3999 37.4899 28.4004 37.49C28.4007 37.49 28.4011 37.4901 28.4012 37.4901C28.4016 37.4902 28.4019 37.4903 28.5 37C28.5981 36.5097 28.5984 36.5098 28.5987 36.5098C28.5988 36.5099 28.5991 36.5099 28.5993 36.51C28.5997 36.51 28.6001 36.5101 28.6004 36.5102C28.601 36.5103 28.6015 36.5104 28.6019 36.5105C28.6026 36.5106 28.6027 36.5107 28.6022 36.5106C28.6014 36.5104 28.5982 36.5097 28.5929 36.5083C28.5824 36.5057 28.5633 36.5007 28.5367 36.4925C28.4835 36.4763 28.4002 36.4477 28.2942 36.4013C28.0823 36.3086 27.7799 36.1449 27.4451 35.8659C26.7813 35.3127 25.9609 34.2819 25.4851 32.3787L24.5149 32.6213Z"
+                  fill="black"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="attack">
+            <h1 class="attack__title">Attacks</h1>
+            <div class="attack__item">
+              <div class="attack__label">Sneak Attack</div>
+              <div class="attack__range">On&nbsp;hit</div>
+              <div class="attack__details"><span data-sneak-attack-dice></span> with finesse or&nbsp;ranged weapon</div>
+            </div>
+            <div class="attack__item">
+              <div class="attack__label">Rapier</div>
+              <div class="attack__range">Melee</div>
+              <div class="attack__details">
+                +<span data-attack-dex>0</span>&nbsp;AC d8+<span data-dex-mod>3</span> Piercing
+              </div>
+            </div>
+            <div class="attack__item">
+              <div class="attack__label">Shortsword</div>
+              <div class="attack__range">Melee</div>
+              <div class="attack__details">
+                +<span data-attack-dex>0</span>&nbsp;AC d6+<span data-dex-mod>3</span> Slashing
+              </div>
+            </div>
+            <div class="attack__item">
+              <div class="attack__label">Shortsword Offhand</div>
+              <div class="attack__range">Melee</div>
+              <div class="attack__details">+<span data-attack-dex>0</span>&nbsp;AC d6&nbsp;Slashing</div>
+            </div>
+            <div class="attack__item if-trickster">
+              <div class="attack__label">Booming Blade</div>
+              <div class="attack__range">With Melee Attack</div>
+              <div class="attack__details" data-booming-blade-damage></div>
+            </div>
+            <div class="attack__item if-trickster">
+              <div class="attack__label">Green-flame Blade</div>
+              <div class="attack__range">With Melee Attack</div>
+              <div class="attack__details" data-greenflame-blade-damage></div>
+            </div>
+            <div class="attack__item if-shadow-blade">
+              <div class="attack__label">Shadow Blade</div>
+              <div class="attack__range">Melee</div>
+              <div class="attack__details">
+                +<span data-attack-dex>0</span>&nbsp;AC 2d8+<span data-dex-mod>0</span> Psychic
+              </div>
+            </div>
+            <div class="attack__item">
+              <div class="attack__label">Longbow</div>
+              <div class="attack__range">150&nbsp;/ 600</div>
+              <div class="attack__details">
+                +<span data-attack-dex>0</span>&nbsp;AC d8+<span data-dex-mod>0</span> Piercing
+              </div>
+            </div>
+          </div>
+          <div class="spell">
+            <h1 class="spell__title">Spells</h1>
+            <div class="spell__item">
+              <div class="spell__label">Prestidigitation</div>
+              <div class="spell__level"></div>
+              <div class="spell__note">Cantrip</div>
+            </div>
+            <div class="spell__item if-trickster">
+              <div class="spell__label">Booming Blade</div>
+              <div class="spell__level"></div>
+              <div class="spell__note">Cantrip</div>
+            </div>
+            <div class="spell__item if-trickster">
+              <div class="spell__label">Green-flame Blade</div>
+              <div class="spell__level"></div>
+              <div class="spell__note">Cantrip</div>
+            </div>
+            <div class="spell__item if-trickster">
+              <div class="spell__label">Mage Hand</div>
+              <div class="spell__level"></div>
+              <div class="spell__note">Cantrip</div>
+            </div>
+            <div class="spell__item if-trickster">
+              <div class="spell__label">Charm person</div>
+              <div class="spell__level">1&nbsp;level</div>
+              <div class="spell__note">13&nbsp;WIS Save</div>
+            </div>
+            <div class="spell__item if-trickster">
+              <div class="spell__label">Disguise Self</div>
+              <div class="spell__level">1&nbsp;level</div>
+              <div class="spell__note">13&nbsp;INT Save</div>
+            </div>
+            <div class="spell__item if-trickster">
+              <div class="spell__label">Find Familiar</div>
+              <div class="spell__level">1&nbsp;level</div>
+              <div class="spell__note">100&nbsp;ft.</div>
+            </div>
+            <div class="spell__item if-trickster-4">
+              <div class="spell__label">Illusory Script</div>
+              <div class="spell__level">1&nbsp;level</div>
+              <div class="spell__note">1&nbsp;minute</div>
+            </div>
+            <div class="spell__item if-shadow-blade">
+              <div class="spell__label">Shadow Blade</div>
+              <div class="spell__level">1&nbsp;level</div>
+              <div class="spell__note">1&nbsp;minute</div>
+            </div>
+          </div>
+          <div class="resource">
+            <h1 class="resource__title">Resources</h1>
+            <div class="resource__kind">
+              <div class="resource__label">Hit Dice d<span data-hit-die></span></div>
+              <div class="resource__boxes" data-hit-die-count data-resource-boxes="1"></div>
+            </div>
+            <div class="resource__kind if-trickster" data-spell-slots>
+              <div class="resource__label">Spell Slots</div>
+            </div>
+          </div>
+          <div class="typography" style="margin-top: 10px">
+            <h1>Equipment</h1>
+            <p style="margin-top: 9px" data-equipment></p>
+          </div>
+        </div>
+        <div class="sheet__column">
+          <div class="typography" data-race-traits>
+            <h1><span data-race></span> Traits</h1>
+          </div>
+        </div>
+        <div class="sheet__column">
+          <div class="typography">
+            <h1>Class Features</h1>
+            <h2>Sneak Attack</h2>
+            <p>
+              Beginning at&nbsp;1st level, you know how to&nbsp;strike subtly and exploit a&nbsp;foe&rsquo;s
+              distraction. Once per turn, you can deal an&nbsp;extra 1d6 damage to&nbsp;one creature you hit with
+              an&nbsp;attack if&nbsp;you have advantage on&nbsp;the attack roll. The attack must use a&nbsp;finesse
+              or&nbsp;a&nbsp;ranged weapon.
+            </p>
+            <p>
+              You don&rsquo;t need advantage on&nbsp;the attack roll if&nbsp;another enemy of&nbsp;the target
+              is&nbsp;within 5&nbsp;feet of&nbsp;it, that enemy isn&rsquo;t incapacitated, and you don&rsquo;t have
+              disadvantage on&nbsp;the attack roll. The amount of&nbsp;the extra damage increases as&nbsp;you gain
+              levels in&nbsp;this class, as&nbsp;shown in&nbsp;the Sneak Attack column of&nbsp;the Rogue table.
+            </p>
+            <h2>Expertise</h2>
+            <p>
+              At&nbsp;1st level, choose two of&nbsp;your skill proficiencies, or&nbsp;one of&nbsp;your skill
+              proficiencies and your proficiency with thieves&rsquo; tools. Your proficiency bonus is&nbsp;doubled for
+              any ability check you make that uses either of&nbsp;the chosen proficiencies.
+            </p>
+            <p>
+              At&nbsp;6th level, you can choose two more of&nbsp;your proficiencies (in&nbsp;skills or&nbsp;with
+              thieves&rsquo; tools) to&nbsp;gain this benefit.
+            </p>
+            <h2>Thieves&rsquo; Cant</h2>
+            <p>
+              During your rogue training you learned thieves&rsquo; cant, a&nbsp;secret mix of&nbsp;dialect, jargon, and
+              code that allows you to&nbsp;hide messages in&nbsp;seemingly normal conversation. Only another creature
+              that knows thieves&rsquo; cant understands such messages. It&nbsp;takes four times longer to&nbsp;convey
+              such a&nbsp;message than it&nbsp;does to&nbsp;speak the same idea plainly.
+            </p>
+            <p>
+              In&nbsp;addition, you understand a&nbsp;set of&nbsp;secret signs and symbols used to&nbsp;convey short,
+              simple messages, such as&nbsp;whether an&nbsp;area is&nbsp;dangerous or&nbsp;the territory
+              of&nbsp;a&nbsp;thieves&rsquo; guild, whether loot is&nbsp;nearby, or&nbsp;whether the people
+              in&nbsp;an&nbsp;area are easy marks or&nbsp;will provide a&nbsp;safe house for thieves on&nbsp;the run.
+            </p>
+            <h2>Cunning Action</h2>
+            <p>
+              Starting at&nbsp;2nd level, your quick thinking and agility allow you to&nbsp;move and act quickly. You
+              can take a&nbsp;bonus action on&nbsp;each of&nbsp;your turns in&nbsp;combat. This action can be&nbsp;used
+              only to&nbsp;take the Dash, Disengage, or&nbsp;Hide action.
+            </p>
+            <h2>Roguish Archetype</h2>
+            <p>
+              At&nbsp;3rd level, you choose an&nbsp;archetype that you emulate in&nbsp;the exercise of&nbsp;your rogue
+              abilities: Thief, Assassin, or&nbsp;Arcane Trickster, all detailed at&nbsp;the end of&nbsp;the class
+              description. Your archetype choice grants you features at&nbsp;3rd level and then again at&nbsp;9th, 13th,
+              and 17th level.
+            </p>
+          </div>
+        </div>
+        <div class="sheet__column">
+          <div class="typography">
+            <h1 class="extender">&nbsp;</h1>
+            <h2>Spellcasting</h2>
+            <p>
+              When you reach 3rd level, you gain the ability to&nbsp;cast spells. See chapter 10&nbsp;for the general
+              rules of&nbsp;spellcasting and chapter 11&nbsp;for the wizard spell list.
+            </p>
+            <p>
+              <strong>Cantrips.</strong> You learn three cantrips: mage hand and two other cantrips of&nbsp;your choice
+              from the wizard spell list. You learn another wizard cantrip of&nbsp;your choice at&nbsp;10th level.
+            </p>
+            <p>
+              <strong>Spell Slots.</strong> The Arcane Trickster Spellcasting table shows how many spell slots you have
+              to&nbsp;cast your spells of&nbsp;1st level and higher. To&nbsp;cast one of&nbsp;these spells, you must
+              expend a&nbsp;slot of&nbsp;the spell&rsquo;s level or&nbsp;higher. You regain all expended spell slots
+              when you finish a&nbsp;long rest.
+            </p>
+            <p>
+              For example, if&nbsp;you know the 1st-level spell charm person and have a&nbsp;1st-level and
+              a&nbsp;2nd-level spell slot available, you can cast charm person using either slot.
+            </p>
+            <p>
+              <strong>Spells Known of&nbsp;1st-Level and Higher.</strong> You know three 1st-level wizard spells
+              of&nbsp;your choice, two of&nbsp;which you must choose from the enchantment and illusion spells
+              on&nbsp;the wizard spell list. The Spells Known column of&nbsp;the Arcane Trickster Spellcasting table
+              shows when you learn more wizard spells of&nbsp;1st level or&nbsp;higher. Each of&nbsp;these spells must
+              be&nbsp;an&nbsp;enchantment or&nbsp;illusion spell of&nbsp;your choice, and must
+              be&nbsp;of&nbsp;a&nbsp;level for which you have spell slots. For instance, when you reach 7th level
+              in&nbsp;this class, you can learn one new spell of&nbsp;1st or&nbsp;2nd level.
+            </p>
+            <p>The spells you learn at&nbsp;8th, 14th, and 20th level can come from any school of&nbsp;magic.</p>
+            <p>
+              Whenever you gain a&nbsp;level in&nbsp;this class, you can replace one of&nbsp;the wizard spells you know
+              with another spell of&nbsp;your choice from the wizard spell list. The new spell must
+              be&nbsp;of&nbsp;a&nbsp;level for which you have spell slots, and it&nbsp;must be&nbsp;an&nbsp;enchantment
+              or&nbsp;illusion spell, unless you&rsquo;re replacing the spell you gained at&nbsp;8th, 14th, or&nbsp;20th
+              level.
+            </p>
+            <p>
+              <strong>Spellcasting Ability.</strong> Intelligence is&nbsp;your spellcasting ability for your wizard
+              spells, since you learn your spells through dedicated study and memorization. You use your Intelligence
+              whenever a&nbsp;spell refers to&nbsp;your spellcasting ability. In&nbsp;addition, you use your
+              Intelligence modifier when setting the saving throw
+            </p>
+            <p>DC&nbsp;for a&nbsp;wizard spell you cast and when making an&nbsp;attack roll with one.</p>
+            <p>Spell save DC = 8 + proficiency + Intelligence modifier</p>
+            <p>Spell attack modifier = proficiency + Intelligence modifier</p>
+            <h2>Mage Hand Legerdemain</h2>
+            <p>
+              Starting at&nbsp;3rd level, when you cast mage hand, you can make the spectral hand invisible, and you can
+              perform the following additional tasks with&nbsp;it:
+            </p>
+            <ul>
+              <li>
+                You can stow one object the hand is&nbsp;holding in&nbsp;a&nbsp;container worn or&nbsp;carried
+                by&nbsp;another creature.
+              </li>
+              <li>
+                You can retrieve an&nbsp;object in&nbsp;a&nbsp;container worn or&nbsp;carried by&nbsp;another creature.
+              </li>
+              <li>You can use thieves&rsquo; tools to&nbsp;pick locks and disarm traps at&nbsp;range.</li>
+            </ul>
+            <p>
+              You can perform one of&nbsp;these tasks without being noticed by&nbsp;a&nbsp;creature if&nbsp;you succeed
+              on&nbsp;a&nbsp;Dexterity (Sleight of&nbsp;Hand) check contested by&nbsp;the creature&rsquo;s Wisdom
+              (Perception) check.
+            </p>
+            <p>
+              In&nbsp;addition, you can use the bonus action granted by&nbsp;your Cunning Action to&nbsp;control the
+              hand.
+            </p>
+            <h2>Ability Score Improvement</h2>
+            <p>
+              When you reach 4th level, and again at&nbsp;8th, 10th, 12th, 16th, and 19th level, you can increase one
+              ability score of&nbsp;your choice by&nbsp;2, or&nbsp;you can increase two ability scores of&nbsp;your
+              choice by&nbsp;1. As&nbsp;normal, you can&rsquo;t increase an&nbsp;ability score above 20&nbsp;using this
+              feature.
+            </p>
+          </div>
+        </div>
+        <div class="sheet__column">
+          <div class="typography">
+            <h1 class="extender">&nbsp;</h1>
+            <h2>Evasion</h2>
+            <p>
+              Beginning at&nbsp;7th level, you can nimbly dodge out of&nbsp;the way of&nbsp;certain area effects, such
+              as&nbsp;a&nbsp;red dragon&rsquo;s fiery breath or&nbsp;an&nbsp;ice storm spell. When you are subjected
+              to&nbsp;an&nbsp;effect that allows you to&nbsp;make a&nbsp;Dexterity saving throw to&nbsp;take only half
+              damage, you instead take no&nbsp;damage if&nbsp;you succeed on&nbsp;the saving throw, and only half damage
+              if&nbsp;you fail.
+            </p>
+            <h2>Magical Ambush</h2>
+            <p>
+              Starting at&nbsp;9th level, if&nbsp;you are hidden from a&nbsp;creature when you cast a&nbsp;spell
+              on&nbsp;it, the creature has disadvantage on&nbsp;any saving throw it&nbsp;makes against the spell this
+              turn.
+            </p>
+            <h2>Reliable Talent</h2>
+            <p>
+              By&nbsp;11th level, you have refined your chosen skills until they approach perfection. Whenever you make
+              an&nbsp;ability check that lets you add your proficiency bonus, you can treat a&nbsp;d20 roll
+              of&nbsp;9&nbsp;or lower as&nbsp;a&nbsp;10.
+            </p>
+            <h2>Blindsense</h2>
+            <p>
+              Starting at&nbsp;14th level, if&nbsp;you are able to&nbsp;hear, you are aware of&nbsp;the location
+              of&nbsp;any hidden or&nbsp;invisible creature within 10&nbsp;feet of&nbsp;you.
+            </p>
+            <h2>Versatile Trickster</h2>
+            <p>
+              At&nbsp;13th level, you gain the ability to&nbsp;distract targets with your mage hand.
+              As&nbsp;a&nbsp;bonus action on&nbsp;your turn, you can designate a&nbsp;creature within 5&nbsp;feet
+              of&nbsp;the spectral hand created by&nbsp;the spell. Doing so&nbsp;gives you advantage on&nbsp;attack
+              rolls against that creature until the end of&nbsp;the turn.
+            </p>
+            <p>
+              Starting at&nbsp;14th level, if&nbsp;you are able to&nbsp;hear, you are aware of&nbsp;the location
+              of&nbsp;any hidden or&nbsp;invisible creature within 10&nbsp;feet of&nbsp;you.
+            </p>
+            <h2>Slippery Mind</h2>
+            <p>
+              By&nbsp;15th level, you have acquired greater mental strength. You gain proficiency in&nbsp;Wisdom saving
+              throws.
+            </p>
+            <h2>Spell Thief</h2>
+            <p>
+              At&nbsp;17th level, you gain the ability to&nbsp;magically steal the knowledge of&nbsp;how to&nbsp;cast
+              a&nbsp;spell from another spellcaster.
+            </p>
+            <h2>Elusive</h2>
+            <p>
+              Beginning at&nbsp;18th level, you are so&nbsp;evasive that attackers rarely gain the upper hand against
+              you. No&nbsp;attack roll has advantage against you while you aren&rsquo;t incapacitated.
+            </p>
+            <p>
+              Immediately after a&nbsp;creature casts a&nbsp;spell that targets you or&nbsp;includes you in&nbsp;its
+              area of&nbsp;effect, you can use your reaction to&nbsp;force the creature to&nbsp;make a&nbsp;saving throw
+              with its spellcasting ability modifier. The DC&nbsp;equals your spell save DC. On&nbsp;a&nbsp;failed save,
+              you negate the spell&rsquo;s effect against you, and you steal the knowledge of&nbsp;the spell
+              if&nbsp;it&nbsp;is&nbsp;at&nbsp;least 1st level and of&nbsp;a&nbsp;level you can cast
+              (it&nbsp;doesn&rsquo;t need to&nbsp;be&nbsp;a&nbsp;wizard spell). For the next 8&nbsp;hours, you know the
+              spell and can cast it&nbsp;using your spell slots. The creature can&rsquo;t cast that spell until the
+              8&nbsp;hours have passed.
+            </p>
+            <p>Once you use this feature, you can&rsquo;t use it&nbsp;again until you finish a&nbsp;long rest.</p>
+            <h2>Stroke of&nbsp;Luck</h2>
+            <p>
+              At&nbsp;20th level, you have an&nbsp;uncanny knack for succeeding when you need&nbsp;to. If&nbsp;your
+              attack misses a&nbsp;target within range, you can turn the miss into a&nbsp;hit. Alternatively,
+              if&nbsp;you fail an&nbsp;ability check, you can treat the d20 roll as&nbsp;a&nbsp;20.
+            </p>
+            <p>
+              Once you use this feature, you can&rsquo;t use it&nbsp;again until you finish a&nbsp;short or&nbsp;long
+              rest.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/bleak.ts"></script>
+  </body>
+</html>

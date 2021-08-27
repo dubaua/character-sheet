@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "sass": "^1.35.2",
+    "typescript": "^4.3.5"
+  },
+  "scripts": {
+    "dev": "parcel index.html --open",
+    "triss": "parcel triss.html --open"
+  }
+}

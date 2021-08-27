@@ -1,0 +1,56 @@
+.skill {
+  $this: &;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 16px;
+  font-size: 8px;
+  line-height: 16px;
+  padding-top: 1px;
+
+  &__modifier {
+    position: relative;
+    width: 16px;
+    font-weight: 500;
+    font-feature-settings: "tnum" on;
+    text-align: center;
+
+    &:after {
+      position: absolute;
+      content: '';
+      inset: -1px;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    &--proficiency {
+      &:after {
+        transform: translate(0, 0.5px);
+        background-image: url('../icons/proficiency.svg');
+      }
+    }
+
+    &--expertise {
+      &:after {
+        transform: translate(0, 2px);
+        background-image: url('../icons/expertise.svg');
+      }
+    }
+  }
+
+  &--proficiency {
+    height: auto;
+    margin-top: 18px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
+    padding-top: 0;
+    #{$this}__modifier {
+      font-weight: normal;
+      &:after {
+        inset: -3px;
+      }
+    }
+  }
+}

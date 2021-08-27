@@ -1,0 +1,36 @@
+@import '../webfonts/Montserrat.css';
+@import './ability.scss';
+@import './attack.scss';
+@import './hit-dice.scss';
+@import './icons.scss';
+@import './resource.scss';
+@import './proficiency.scss';
+@import './skill.scss';
+@import './sheet.scss';
+@import './spell.scss';
+@import './typography.scss';
+@import './variables.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body:not(.trickster) .if-trickster {
+  display: none;
+}
+
+body:not(.longbow) .if-longbow {
+  display: none;
+}
+
+body:not(.trickster-4) .if-trickster-4 {
+  display: none;
+}
+
+body:not(.shadow-blade) .if-shadow-blade {
+  display: none;
+}
