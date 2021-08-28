@@ -1,4 +1,5 @@
 import { AbilitiyEnum } from './models/ability';
+import { Action, ActionType } from './models/action';
 import { Character } from './models/character';
 import { SkillEnum } from './models/skill';
 import { renderCharacter } from './render-functions';
@@ -28,6 +29,22 @@ character.hitLevelUpRolls = [6, 8, 8];
 character.alignment = 'Chaotic Neutral';
 character.archetype = 'Arcane Trickster';
 
+const sneakAttack = new Action('Sneak Attack', 'On hit', ActionType.BonusAction, (character) => {
+  return `${Math.floor((character.level - 1) / 2) + 1}d6 with finesse or ranged weapon`;
+});
+const rapierAttack = new Action('Rapier', 'Melee', ActionType.Action, (character) => {
+  const attack = character.dexMod + character.proficiency;
+  return `+${attack} AC, d8+${character.dexMod} Piercing`;
+});
+const shortswordAttack = new Action('Shortsword', 'Melee', ActionType.Action, (character) => {
+  const attack = character.dexMod + character.proficiency;
+  return `+${attack} AC, d6+${character.dexMod} Piercing`;
+});
+const shortswordOffhandAttack = new Action('Shortsword Offhand', 'Melee', ActionType.Action, (character) => {
+  const attack = character.dexMod + character.proficiency;
+  return `+${attack} AC, d6 Piercing`;
+});
+
 character.proficiencies = [
   'Light Armor',
   'Simple Weapons',
@@ -45,8 +62,9 @@ character.equipment = `Studded Leather, rapier, longbow and quiver of&nbsp;20&nb
 thieves&rsquo; tools, fine clothes, disguise kit, cook&rsquo;s utensils, burglar&rsquo;s Pack. Backpack,
 a&nbsp;bag of&nbsp;1,000 ball bearings, 10&nbsp;feet of&nbsp;string, a&nbsp;bell, 5&nbsp;candles,
 a&nbsp;crowbar, a hammer, 10&nbsp;pilons, a&nbsp;hooded lantern, 2&nbsp;flasks of&nbsp;oil, 5&nbsp;days
-rations, a&nbsp;tinderbox, and a&nbsp;waterskin.&nbsp;50&nbsp;feet hempen rope.`
+rations, a&nbsp;tinderbox, and a&nbsp;waterskin.&nbsp;50&nbsp;feet hempen rope.`;
 
 renderCharacter(character);
 
-// TODO feat
+// TODO feats
+// TODO Attacks

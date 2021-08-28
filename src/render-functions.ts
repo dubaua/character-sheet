@@ -153,6 +153,7 @@ export function renderCharacter(character: Character) {
 
   document.querySelector('[data-proficiency]').textContent = character.proficiency.toString();
   document.querySelector('[data-perception]').textContent = character.passivePerception.toString();
+  document.querySelector('[data-insight]').textContent = character.passiveInsight.toString();
   document.querySelector('[data-armor]').textContent = character.armor.toString();
   document.querySelector('[data-hp]').textContent = character.hp.toString();
   document.querySelector('[data-hit-die]').textContent = character.hitDie.toString();

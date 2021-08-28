@@ -1,4 +1,5 @@
 import { AbilitiyEnum, Ability } from './ability';
+import { Action } from './action';
 import { Race } from './race';
 import { Skill, SkillEnum } from './skill';
 
@@ -16,6 +17,7 @@ export class Character {
   public proficiencies: string[] = [];
   public equipment = '';
   public race: Race;
+  public actions = new Map<string, Action>();
 
   constructor(public name: string, public className, public racename: string, public subracename = '') {
     this.initAbilities();
@@ -65,6 +67,10 @@ export class Character {
 
   public get passivePerception(): number {
     return 10 + this.getSkillModifier(SkillEnum.Perception);
+  }
+
+  public get passiveInsight(): number {
+    return 10 + this.getSkillModifier(SkillEnum.Insight);
   }
 
   public get initiative(): number {
