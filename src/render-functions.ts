@@ -1,4 +1,5 @@
 import { AbilitiyEnum, Ability } from './models/ability';
+import { Action } from './models/action';
 import { ArcaneTricksterSpellSlots } from './models/arcane-trickster-spellslots';
 import { Character } from './models/character';
 import { ITrait } from './models/race';
@@ -125,6 +126,29 @@ export function renderRaceTrait(traitTitle: string, traitDecsription: string) {
   return traitNode;
 }
 
+export function renderAction(action: Action, character: Character) {
+  const actionNode = document.createElement('div');
+  actionNode.classList.add('action');
+
+  const actionLabelNode = document.createElement('div');
+  actionLabelNode.classList.add('action__label');
+  actionLabelNode.textContent = action.title;
+
+  const actionRangeNode = document.createElement('div');
+  actionRangeNode.classList.add('action__range');
+  actionRangeNode.textContent = action.range;
+
+  const actionDetailsNode = document.createElement('div');
+  actionDetailsNode.classList.add('action__details');
+  actionDetailsNode.textContent = action.getDescription(character);
+
+  actionNode.appendChild(actionLabelNode);
+  actionNode.appendChild(actionRangeNode);
+  actionNode.appendChild(actionDetailsNode);
+
+  return actionNode;
+}
+
 export function renderCharacter(character: Character) {
   if (character?.race?.traits) {
     character.race.traits.forEach((traitDescription, trainName) => {
@@ -160,7 +184,6 @@ export function renderCharacter(character: Character) {
   (document.querySelector('[data-hit-die-count]') as HTMLElement).dataset.resourceBoxes = character.level.toString();
   document.querySelector('[data-speed]').textContent = character.speed.toString();
   document.querySelector('[data-initiative]').textContent = character.initiative.toString();
-  document.querySelector('[data-sneak-attack-dice]').textContent = character.sneakAttackDie;
   document.querySelectorAll('[data-attack-dex]').forEach((node) => {
     node.textContent = character.attackDex.toString();
   });
@@ -170,9 +193,6 @@ export function renderCharacter(character: Character) {
   document.querySelectorAll('[data-int-mod]').forEach((node) => {
     node.textContent = character.intMod.toString();
   });
-  document.querySelector('[data-booming-blade-damage]').textContent = character.boomingBladeDamage;
-  document.querySelector('[data-greenflame-blade-damage]').textContent = character.grennflameBladeDamage;
-
   const spellSlotsNode = document.querySelector('[data-spell-slots]');
   if (character.level >= 3) {
     document.body.classList.add('trickster');
@@ -210,4 +230,8 @@ export function renderCharacter(character: Character) {
       resourceNode.appendChild(boxNode);
     }
   });
+
+  character.actions.forEach(action => {
+    document.querySelector('[data-actions]').appendChild(renderAction(action, character));
+  })
 }

@@ -19,7 +19,7 @@ export class Character {
   public race: Race;
   public actions = new Map<string, Action>();
 
-  constructor(public name: string, public className, public racename: string, public subracename = '') {
+  constructor(public name: string, public className: string, public racename: string, public subracename = '') {
     this.initAbilities();
     this.initSkills();
     this.initRace(racename, subracename);
