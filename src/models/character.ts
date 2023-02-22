@@ -1,10 +1,10 @@
-import { AbilitiyEnum, Ability } from './ability';
+import { AbilityEnum, Ability } from './ability';
 import { Action } from './action';
 import { Race } from './race';
 import { Skill, SkillEnum } from './skill';
 
 export class Character {
-  public abilities = new Map<AbilitiyEnum, Ability>();
+  public abilities = new Map<AbilityEnum, Ability>();
   public skills = new Map<SkillEnum, Skill>();
   public level = 1;
   public armor = 10;
@@ -26,8 +26,8 @@ export class Character {
   }
 
   private initAbilities() {
-    for (const abilityName in AbilitiyEnum) {
-      this.abilities.set(abilityName as AbilitiyEnum, new Ability(abilityName));
+    for (const abilityName in AbilityEnum) {
+      this.abilities.set(abilityName as AbilityEnum, new Ability(abilityName));
     }
   }
 
@@ -41,8 +41,12 @@ export class Character {
     this.race = new Race(race, subrace);
   }
 
-  public getAbilityModifier(name: AbilitiyEnum): number {
-    return Math.floor((this.abilities.get(name).value - 10) / 2);
+  public addAction(action: Action) {
+    this.actions.set(action.title, action);
+  }
+
+  public getAbilityModifier(name: AbilityEnum): number {
+    return this.abilities.get(name).modifier;
   }
 
   public getSkillModifier(name: SkillEnum): number {
@@ -62,7 +66,7 @@ export class Character {
   }
 
   public get proficiency(): number {
-    return Math.floor(this.level / 4) + 2;
+    return Math.floor((this.level - 1) / 4) + 2;
   }
 
   public get passivePerception(): number {
@@ -78,70 +82,26 @@ export class Character {
   }
 
   public get strMod(): number {
-    return this.getAbilityModifier(AbilitiyEnum.Strength);
+    return this.getAbilityModifier(AbilityEnum.Strength);
   }
 
   public get dexMod(): number {
-    return this.getAbilityModifier(AbilitiyEnum.Dexterity);
+    return this.getAbilityModifier(AbilityEnum.Dexterity);
   }
 
   public get conMod(): number {
-    return this.getAbilityModifier(AbilitiyEnum.Constitution);
+    return this.getAbilityModifier(AbilityEnum.Constitution);
   }
 
   public get intMod(): number {
-    return this.getAbilityModifier(AbilitiyEnum.Intelligence);
+    return this.getAbilityModifier(AbilityEnum.Intelligence);
   }
 
   public get wisMod(): number {
-    return this.getAbilityModifier(AbilitiyEnum.Wisdom);
+    return this.getAbilityModifier(AbilityEnum.Wisdom);
   }
 
   public get chaMod(): number {
-    return this.getAbilityModifier(AbilitiyEnum.Charisma);
-  }
-
-  public get sneakAttackDie(): string {
-    return `${Math.floor((this.level - 1) / 2) + 1}d6`;
-  }
-
-  public get attackDex(): number {
-    return this.proficiency + this.dexMod;
-  }
-
-  public get boomingBladeDamage(): string {
-    let primaryDamage = '';
-    let moveDamage = 'd8 Thunder';
-    if (this.level >= 5) {
-      primaryDamage = 'd8 Thunder ';
-      moveDamage = '2d8 Thunder';
-    }
-    if (this.level >= 11) {
-      primaryDamage = '2d8 Thunder ';
-      moveDamage = '3d8 Thunder';
-    }
-    if (this.level >= 17) {
-      primaryDamage = '3d8 Thunder ';
-      moveDamage = '4d8 Thunder';
-    }
-    return `${primaryDamage}if target willingly moves ${moveDamage}`;
-  }
-
-  public get grennflameBladeDamage(): string {
-    let primaryDamage = '';
-    let secondaryDamage = `${this.intMod} Fire`;
-    if (this.level >= 5) {
-      primaryDamage = 'd8 Fire ';
-      secondaryDamage = `d8+${this.intMod} Fire`;
-    }
-    if (this.level >= 11) {
-      primaryDamage = '2d8 Fire ';
-      secondaryDamage = `2d8+${this.intMod} Fire`;
-    }
-    if (this.level >= 17) {
-      primaryDamage = '3d8 Fire ';
-      secondaryDamage = `3d8+${this.intMod} Fire`;
-    }
-    return `${primaryDamage} and ${secondaryDamage} to secondary target`;
+    return this.getAbilityModifier(AbilityEnum.Charisma);
   }
 }

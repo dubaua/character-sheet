@@ -13,6 +13,7 @@
   &__label {
     font-weight: 500;
     margin-right: 0.38em;
+    transform: translate(0, -1px);
   }
 
   &__group {
@@ -28,17 +29,17 @@
   &__box {
     box-sizing: content-box;
     display: inline-block;
-    width: 5px;
-    height: 5px;
-    margin-top: 2.5px;
-    border: 0.8px solid;
+    width: 11px;
+    height: 11px;
+    box-shadow: 0 0 0 1px;
     &:not(:first-child) {
-      border-left: 0;
+      margin-left: 1px;
     }
   }
 
   &__boxes {
      vertical-align: top;
      line-height: 0;
+     margin-left: auto;
   }
 }

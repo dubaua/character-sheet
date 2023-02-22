@@ -163,14 +163,27 @@
           <div class="resource">
             <h1 class="resource__title">Resources</h1>
             <div class="resource__kind">
-              <div class="resource__label">Hit Dice d<span data-hit-die></span></div>
+              <div class="resource__label">Hit Dice — d<span data-hit-die></span></div>
               <div class="resource__boxes" data-hit-die-count data-resource-boxes="1"></div>
             </div>
-            <div class="resource__kind if-trickster" data-spell-slots>
-              <div class="resource__label">Spell Slots</div>
+            <div class="resource__kind">
+              <div class="resource__label">Spells Slots — Level 2</div>
+              <div class="resource__boxes" data-resource-boxes="2"></div>
+            </div>
+            <div class="resource__kind">
+              <div class="resource__label">Hexblade’s Curse</div>
+              <div class="resource__boxes" data-resource-boxes="1"></div>
+            </div>
+            <div class="resource__kind">
+              <div class="resource__label">Faerie Fire</div>
+              <div class="resource__boxes" data-resource-boxes="1"></div>
+            </div>
+            <div class="resource__kind">
+              <div class="resource__label">Inspiration</div>
+              <div class="resource__boxes" data-resource-boxes="1"></div>
             </div>
           </div>
-          <div class="typography" style="margin-top: 10px">
+          <div class="typography" style="margin-top: 9px">
             <h1>Equipment</h1>
             <p style="margin-top: 9px" data-equipment></p>
           </div>
@@ -183,212 +196,193 @@
         <div class="sheet__column">
           <div class="typography">
             <h1>Class Features</h1>
-            <h2>Sneak Attack</h2>
+            <h2>Otherworldly Patron</h2>
             <p>
-              Beginning at&nbsp;1st level, you know how to&nbsp;strike subtly and exploit a&nbsp;foe&rsquo;s
-              distraction. Once per turn, you can deal an&nbsp;extra 1d6 damage to&nbsp;one creature you hit with
-              an&nbsp;attack if&nbsp;you have advantage on&nbsp;the attack roll. The attack must use a&nbsp;finesse
-              or&nbsp;a&nbsp;ranged weapon.
+              At 1st level, you have struck a bargain with an otherworldly being of your choice: the Fiend, which is
+              detailed at the end of the class description, or one from another source. Your choice grants you features
+              at 1st level and again at 6th, 10th, and 14th level.
+            </p>
+            <h2>Pact Magic</h2>
+            <p>
+              Your arcane research and the magic bestowed on you by your patron have given you facility with spells. See
+              Spells Rules for the general rules of spellcasting and the Spells Listing for the warlock spell list.
             </p>
             <p>
-              You don&rsquo;t need advantage on&nbsp;the attack roll if&nbsp;another enemy of&nbsp;the target
-              is&nbsp;within 5&nbsp;feet of&nbsp;it, that enemy isn&rsquo;t incapacitated, and you don&rsquo;t have
-              disadvantage on&nbsp;the attack roll. The amount of&nbsp;the extra damage increases as&nbsp;you gain
-              levels in&nbsp;this class, as&nbsp;shown in&nbsp;the Sneak Attack column of&nbsp;the Rogue table.
-            </p>
-            <h2>Expertise</h2>
-            <p>
-              At&nbsp;1st level, choose two of&nbsp;your skill proficiencies, or&nbsp;one of&nbsp;your skill
-              proficiencies and your proficiency with thieves&rsquo; tools. Your proficiency bonus is&nbsp;doubled for
-              any ability check you make that uses either of&nbsp;the chosen proficiencies.
+              <strong>Cantrips</strong>You know two cantrips of your choice from the warlock spell list. You learn
+              additional warlock cantrips of your choice at higher levels, as shown in the Cantrips Known column of the
+              Warlock table.
             </p>
             <p>
-              At&nbsp;6th level, you can choose two more of&nbsp;your proficiencies (in&nbsp;skills or&nbsp;with
-              thieves&rsquo; tools) to&nbsp;gain this benefit.
-            </p>
-            <h2>Thieves&rsquo; Cant</h2>
-            <p>
-              During your rogue training you learned thieves&rsquo; cant, a&nbsp;secret mix of&nbsp;dialect, jargon, and
-              code that allows you to&nbsp;hide messages in&nbsp;seemingly normal conversation. Only another creature
-              that knows thieves&rsquo; cant understands such messages. It&nbsp;takes four times longer to&nbsp;convey
-              such a&nbsp;message than it&nbsp;does to&nbsp;speak the same idea plainly.
+              <strong>Spell Slots</strong>The Warlock table shows how many spell slots you have to cast your warlock
+              spells of 1st through 5th level. The table also shows what the level of those slots is; all of your spell
+              slots are the same level. To cast one of your warlock spells of 1st level or higher, you must expend a
+              spell slot. You regain all expended spell slots when you finish a short or long rest.
             </p>
             <p>
-              In&nbsp;addition, you understand a&nbsp;set of&nbsp;secret signs and symbols used to&nbsp;convey short,
-              simple messages, such as&nbsp;whether an&nbsp;area is&nbsp;dangerous or&nbsp;the territory
-              of&nbsp;a&nbsp;thieves&rsquo; guild, whether loot is&nbsp;nearby, or&nbsp;whether the people
-              in&nbsp;an&nbsp;area are easy marks or&nbsp;will provide a&nbsp;safe house for thieves on&nbsp;the run.
-            </p>
-            <h2>Cunning Action</h2>
-            <p>
-              Starting at&nbsp;2nd level, your quick thinking and agility allow you to&nbsp;move and act quickly. You
-              can take a&nbsp;bonus action on&nbsp;each of&nbsp;your turns in&nbsp;combat. This action can be&nbsp;used
-              only to&nbsp;take the Dash, Disengage, or&nbsp;Hide action.
-            </p>
-            <h2>Roguish Archetype</h2>
-            <p>
-              At&nbsp;3rd level, you choose an&nbsp;archetype that you emulate in&nbsp;the exercise of&nbsp;your rogue
-              abilities: Thief, Assassin, or&nbsp;Arcane Trickster, all detailed at&nbsp;the end of&nbsp;the class
-              description. Your archetype choice grants you features at&nbsp;3rd level and then again at&nbsp;9th, 13th,
-              and 17th level.
-            </p>
-          </div>
-        </div>
-        <div class="sheet__column">
-          <div class="typography">
-            <h1 class="extender">&nbsp;</h1>
-            <h2>Spellcasting</h2>
-            <p>
-              When you reach 3rd level, you gain the ability to&nbsp;cast spells. See chapter 10&nbsp;for the general
-              rules of&nbsp;spellcasting and chapter 11&nbsp;for the wizard spell list.
+              For example, when you are 5th level, you have two 3rd-level spell slots. To cast the 1st-level spell witch
+              bolt, you must spend one of those slots, and you cast it as a 3rd-level spell.
             </p>
             <p>
-              <strong>Cantrips.</strong> You learn three cantrips: mage hand and two other cantrips of&nbsp;your choice
-              from the wizard spell list. You learn another wizard cantrip of&nbsp;your choice at&nbsp;10th level.
+              <strong>Spells Known of 1st Level and Higher</strong>At 1st level, you know two 1st-level spells of your
+              choice from the warlock spell list.
             </p>
             <p>
-              <strong>Spell Slots.</strong> The Arcane Trickster Spellcasting table shows how many spell slots you have
-              to&nbsp;cast your spells of&nbsp;1st level and higher. To&nbsp;cast one of&nbsp;these spells, you must
-              expend a&nbsp;slot of&nbsp;the spell&rsquo;s level or&nbsp;higher. You regain all expended spell slots
-              when you finish a&nbsp;long rest.
+              The Spells Known column of the Warlock table shows when you learn more warlock spells of your choice of
+              1st level and higher. A spell you choose must be of a level no higher than what’s shown in the table’s
+              Slot Level column for your level. When you reach 6th level, for example, you learn a new warlock spell,
+              which can be 1st, 2nd, or 3rd level.
             </p>
             <p>
-              For example, if&nbsp;you know the 1st-level spell charm person and have a&nbsp;1st-level and
-              a&nbsp;2nd-level spell slot available, you can cast charm person using either slot.
+              Additionally, when you gain a level in this class, you can choose one of the warlock spells you know and
+              replace it with another spell from the warlock spell list, which also must be of a level for which you
+              have spell slots.
             </p>
             <p>
-              <strong>Spells Known of&nbsp;1st-Level and Higher.</strong> You know three 1st-level wizard spells
-              of&nbsp;your choice, two of&nbsp;which you must choose from the enchantment and illusion spells
-              on&nbsp;the wizard spell list. The Spells Known column of&nbsp;the Arcane Trickster Spellcasting table
-              shows when you learn more wizard spells of&nbsp;1st level or&nbsp;higher. Each of&nbsp;these spells must
-              be&nbsp;an&nbsp;enchantment or&nbsp;illusion spell of&nbsp;your choice, and must
-              be&nbsp;of&nbsp;a&nbsp;level for which you have spell slots. For instance, when you reach 7th level
-              in&nbsp;this class, you can learn one new spell of&nbsp;1st or&nbsp;2nd level.
+              <strong>Spellcasting Ability</strong> Charisma is your spellcasting ability for your warlock spells, so
+              you use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your
+              Charisma modifier when setting the saving throw DC for a warlock spell you cast and when making an attack
+              roll with one.
             </p>
-            <p>The spells you learn at&nbsp;8th, 14th, and 20th level can come from any school of&nbsp;magic.</p>
+            <ul>
+              <li>Spell save DC = 8 + your proficiency bonus + your Charisma modifier</li>
+              <li>Spell attack modifier = your proficiency bonus + your Charisma modifier</li>
+            </ul>
             <p>
-              Whenever you gain a&nbsp;level in&nbsp;this class, you can replace one of&nbsp;the wizard spells you know
-              with another spell of&nbsp;your choice from the wizard spell list. The new spell must
-              be&nbsp;of&nbsp;a&nbsp;level for which you have spell slots, and it&nbsp;must be&nbsp;an&nbsp;enchantment
-              or&nbsp;illusion spell, unless you&rsquo;re replacing the spell you gained at&nbsp;8th, 14th, or&nbsp;20th
-              level.
+              <strong>Spellcasting Focus</strong> You can use an arcane focus (see the Adventuring Gear section) as a
+              spellcasting focus for your warlock spells.
             </p>
+            <h2>Hexblade’s Curse</h2>
             <p>
-              <strong>Spellcasting Ability.</strong> Intelligence is&nbsp;your spellcasting ability for your wizard
-              spells, since you learn your spells through dedicated study and memorization. You use your Intelligence
-              whenever a&nbsp;spell refers to&nbsp;your spellcasting ability. In&nbsp;addition, you use your
-              Intelligence modifier when setting the saving throw
-            </p>
-            <p>DC&nbsp;for a&nbsp;wizard spell you cast and when making an&nbsp;attack roll with one.</p>
-            <p>Spell save DC = 8 + proficiency + Intelligence modifier</p>
-            <p>Spell attack modifier = proficiency + Intelligence modifier</p>
-            <h2>Mage Hand Legerdemain</h2>
-            <p>
-              Starting at&nbsp;3rd level, when you cast mage hand, you can make the spectral hand invisible, and you can
-              perform the following additional tasks with&nbsp;it:
+              Starting at 1st level, you gain the ability to place a baleful curse on someone. As a bonus action, choose
+              one creature you can see within 30 feet of you. The target is cursed for 1 minute. The curse ends early if
+              the target dies, you die, or you are incapacitated. Until the curse ends, you gain the following benefits:
             </p>
             <ul>
               <li>
-                You can stow one object the hand is&nbsp;holding in&nbsp;a&nbsp;container worn or&nbsp;carried
-                by&nbsp;another creature.
+                You gain a bonus to damage rolls against the cursed target. The bonus equals your proficiency bonus.
               </li>
               <li>
-                You can retrieve an&nbsp;object in&nbsp;a&nbsp;container worn or&nbsp;carried by&nbsp;another creature.
+                Any attack roll you make against the cursed target is a critical hit on a roll of 19 or 20 on the d20.
               </li>
-              <li>You can use thieves&rsquo; tools to&nbsp;pick locks and disarm traps at&nbsp;range.</li>
+              <li>
+                If the cursed target dies, you regain hit points equal to your warlock level + your Charisma modifier
+                (minimum of 1 hit point).
+              </li>
             </ul>
-            <p>
-              You can perform one of&nbsp;these tasks without being noticed by&nbsp;a&nbsp;creature if&nbsp;you succeed
-              on&nbsp;a&nbsp;Dexterity (Sleight of&nbsp;Hand) check contested by&nbsp;the creature&rsquo;s Wisdom
-              (Perception) check.
-            </p>
-            <p>
-              In&nbsp;addition, you can use the bonus action granted by&nbsp;your Cunning Action to&nbsp;control the
-              hand.
-            </p>
-            <h2>Ability Score Improvement</h2>
-            <p>
-              When you reach 4th level, and again at&nbsp;8th, 10th, 12th, 16th, and 19th level, you can increase one
-              ability score of&nbsp;your choice by&nbsp;2, or&nbsp;you can increase two ability scores of&nbsp;your
-              choice by&nbsp;1. As&nbsp;normal, you can&rsquo;t increase an&nbsp;ability score above 20&nbsp;using this
-              feature.
-            </p>
+            <p>You can’t use this feature again until you finish a short or long rest.</p>
           </div>
         </div>
         <div class="sheet__column">
           <div class="typography">
             <h1 class="extender">&nbsp;</h1>
-            <h2>Evasion</h2>
+            <h2>Hex Warrior</h2>
             <p>
-              Beginning at&nbsp;7th level, you can nimbly dodge out of&nbsp;the way of&nbsp;certain area effects, such
-              as&nbsp;a&nbsp;red dragon&rsquo;s fiery breath or&nbsp;an&nbsp;ice storm spell. When you are subjected
-              to&nbsp;an&nbsp;effect that allows you to&nbsp;make a&nbsp;Dexterity saving throw to&nbsp;take only half
-              damage, you instead take no&nbsp;damage if&nbsp;you succeed on&nbsp;the saving throw, and only half damage
-              if&nbsp;you fail.
+              At 1st level, you acquire the training necessary to effectively arm yourself for battle. You gain
+              proficiency with medium armor, shields, and martial weapons.
             </p>
-            <h2>Magical Ambush</h2>
             <p>
-              Starting at&nbsp;9th level, if&nbsp;you are hidden from a&nbsp;creature when you cast a&nbsp;spell
-              on&nbsp;it, the creature has disadvantage on&nbsp;any saving throw it&nbsp;makes against the spell this
+              The influence of your patron also allows you to mystically channel your will through a particular weapon.
+              Whenever you finish a long rest, you can touch one weapon that you are proficient with and that lacks the
+              two-handed property. When you attack with that weapon, you can use your Charisma modifier, instead of
+              Strength or Dexterity, for the attack and damage rolls. This benefit lasts until you finish a long rest.
+              If you later gain the Pact of the Blade feature, this benefit extends to every pact weapon you conjure
+              with that feature, no matter the weapon's type.
+            </p>
+            <h2>Pact of the Blade</h2>
+            <p>
+              You can use your action to create a pact weapon in your empty hand. You can choose the form that this
+              melee weapon takes each time you create it. You are proficient with it while you wield it. This weapon
+              counts as magical for the purpose of overcoming resistance and immunity to nonmagical attacks and damage.
+            </p>
+            <p>
+              Your pact weapon disappears if it is more than 5 feet away from you for 1 minute or more. It also
+              disappears if you use this feature again, if you dismiss the weapon (no action required), or if you die.
+            </p>
+            <p>
+              You can transform one magic weapon into your pact weapon by performing a special ritual while you hold the
+              weapon. You perform the ritual over the course of 1 hour, which can be done during a short rest.
+            </p>
+            <p>
+              You can then dismiss the weapon, shunting it into an extradimensional space, and it appears whenever you
+              create your pact weapon thereafter. You can't affect an artifact or a sentient weapon in this way. The
+              weapon ceases being your pact weapon if you die, if you perform the 1-hour ritual on a different weapon,
+              or if you use a 1-hour ritual to break your bond to it. The weapon appears at your feet if it is in the
+              extradimensional space when the bond breaks.
+            </p>
+            <h2>Elven Accuracy</h2>
+            <p>
+              The accuracy of elves is legendary, especially that of elf archers and spellcasters. You have uncanny aim
+              with attacks that rely on precision rather than brute force. You gain the following benefits:
+            </p>
+            <ul>
+              <li>Increase your Dexterity, Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.</li>
+              <li>
+                Whenever you have advantage on an attack roll using Dexterity, Intelligence, Wisdom, or Charisma, you
+                can reroll one of the dice once.
+              </li>
+            </ul>
+            <h2>Great Weapon Master</h2>
+            <p>
+              You’ve learned to put the weight of a weapon to your advantage, letting its momentum empower your strikes.
+              You gain the following benefits:
+            </p>
+            <ul>
+              <li>
+                On your turn, when you score a critical hit with a melee weapon or reduce a creature to 0 hit points
+                with one, you can make one melee weapon attack as a bonus action.
+              </li>
+              <li>
+                Before you make a melee attack with a heavy weapon that you are proficient with, you can choose to take
+                a -5 penalty to the attack roll. If the attack hits, you add +10 to the attack’s damage.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sheet__column">
+          <div class="typography">
+            <h1>Eldritch Invocations</h1>
+
+            <p>
+              In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge
+              that imbue you with an abiding magical ability.
+            </p>
+            <p>
+              At 2nd level, you gain two eldritch invocations of your choice. When you gain certain warlock levels, you
+              gain additional invocations of your choice, as shown in the Invocations Known column of the Warlock table.
+            </p>
+            <p>
+              Additionally, when you gain a level in this class, you can choose one of the invocations you know and
+              replace it with another invocation that you could learn at that level.
+            </p>
+            <p>A level prerequisite in an invocation refers to warlock level, not character level.</p>
+            <h2>Eldritch Sight</h2>
+            <p>You can cast Detect Magic at will, without expending a spell slot or material components.</p>
+            <h2>Improved Pact Weapon</h2>
+            <p><strong>Prerequisite: Pact of the Blade feature </strong></p>
+            <p>
+              You can use any weapon you summon with your Pact of the Blade feature as a spellcasting focus for your
+              warlock spells.
+            </p>
+            <p>
+              In addition, the weapon gains a +1 bonus to its attack and damage rolls, unless it is a magic weapon that
+              already has a bonus to those rolls.
+            </p>
+            <p>Finally, the weapon you conjure can be a shortbow, longbow, light crossbow, or heavy crossbow.</p>
+            <h2>Agonizing Blast</h2>
+            <p><strong>Prerequisite: Eldritch Blast cantrip</strong></p>
+            <p>When you cast Eldritch Blast, add your Charisma modifier to the damage it deals on a hit.</p>
+            <h2>Eldritch Smite</h2>
+            <p><strong>Prerequisite: 5th level, Pact of the Blade feature</strong></p>
+            <p>
+              Once per turn when you hit a creature with your pact weapon, you can expend a warlock spell slot to deal
+              an extra 1d8 force damage to the target, plus another 1d8 per level of the spell slot, and you can knock
+              the target prone if it is Huge or smaller.
+            </p>
+            <h2>Thirsting Blade</h2>
+            <p><strong>Prerequisite: 5th level, Pact of the Blade feature</strong></p>
+            <p>
+              You can attack with your pact weapon twice, instead of once, whenever you take the Attack action on your
               turn.
-            </p>
-            <h2>Reliable Talent</h2>
-            <p>
-              By&nbsp;11th level, you have refined your chosen skills until they approach perfection. Whenever you make
-              an&nbsp;ability check that lets you add your proficiency bonus, you can treat a&nbsp;d20 roll
-              of&nbsp;9&nbsp;or lower as&nbsp;a&nbsp;10.
-            </p>
-            <h2>Blindsense</h2>
-            <p>
-              Starting at&nbsp;14th level, if&nbsp;you are able to&nbsp;hear, you are aware of&nbsp;the location
-              of&nbsp;any hidden or&nbsp;invisible creature within 10&nbsp;feet of&nbsp;you.
-            </p>
-            <h2>Versatile Trickster</h2>
-            <p>
-              At&nbsp;13th level, you gain the ability to&nbsp;distract targets with your mage hand.
-              As&nbsp;a&nbsp;bonus action on&nbsp;your turn, you can designate a&nbsp;creature within 5&nbsp;feet
-              of&nbsp;the spectral hand created by&nbsp;the spell. Doing so&nbsp;gives you advantage on&nbsp;attack
-              rolls against that creature until the end of&nbsp;the turn.
-            </p>
-            <p>
-              Starting at&nbsp;14th level, if&nbsp;you are able to&nbsp;hear, you are aware of&nbsp;the location
-              of&nbsp;any hidden or&nbsp;invisible creature within 10&nbsp;feet of&nbsp;you.
-            </p>
-            <h2>Slippery Mind</h2>
-            <p>
-              By&nbsp;15th level, you have acquired greater mental strength. You gain proficiency in&nbsp;Wisdom saving
-              throws.
-            </p>
-            <h2>Spell Thief</h2>
-            <p>
-              At&nbsp;17th level, you gain the ability to&nbsp;magically steal the knowledge of&nbsp;how to&nbsp;cast
-              a&nbsp;spell from another spellcaster.
-            </p>
-            <h2>Elusive</h2>
-            <p>
-              Beginning at&nbsp;18th level, you are so&nbsp;evasive that attackers rarely gain the upper hand against
-              you. No&nbsp;attack roll has advantage against you while you aren&rsquo;t incapacitated.
-            </p>
-            <p>
-              Immediately after a&nbsp;creature casts a&nbsp;spell that targets you or&nbsp;includes you in&nbsp;its
-              area of&nbsp;effect, you can use your reaction to&nbsp;force the creature to&nbsp;make a&nbsp;saving throw
-              with its spellcasting ability modifier. The DC&nbsp;equals your spell save DC. On&nbsp;a&nbsp;failed save,
-              you negate the spell&rsquo;s effect against you, and you steal the knowledge of&nbsp;the spell
-              if&nbsp;it&nbsp;is&nbsp;at&nbsp;least 1st level and of&nbsp;a&nbsp;level you can cast
-              (it&nbsp;doesn&rsquo;t need to&nbsp;be&nbsp;a&nbsp;wizard spell). For the next 8&nbsp;hours, you know the
-              spell and can cast it&nbsp;using your spell slots. The creature can&rsquo;t cast that spell until the
-              8&nbsp;hours have passed.
-            </p>
-            <p>Once you use this feature, you can&rsquo;t use it&nbsp;again until you finish a&nbsp;long rest.</p>
-            <h2>Stroke of&nbsp;Luck</h2>
-            <p>
-              At&nbsp;20th level, you have an&nbsp;uncanny knack for succeeding when you need&nbsp;to. If&nbsp;your
-              attack misses a&nbsp;target within range, you can turn the miss into a&nbsp;hit. Alternatively,
-              if&nbsp;you fail an&nbsp;ability check, you can treat the d20 roll as&nbsp;a&nbsp;20.
-            </p>
-            <p>
-              Once you use this feature, you can&rsquo;t use it&nbsp;again until you finish a&nbsp;short or&nbsp;long
-              rest.
             </p>
           </div>
         </div>

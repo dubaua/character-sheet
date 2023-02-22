@@ -1,4 +1,4 @@
-import { AbilitiyEnum } from './ability';
+import { AbilityEnum } from './ability';
 
 export enum SkillEnum {
   Acrobatics = 'Acrobatics',
@@ -42,24 +42,24 @@ export enum SkillTitleEnum {
 }
 
 export enum SkillAttributes {
-  Acrobatics = AbilitiyEnum.Dexterity,
-  AnimalHandling = AbilitiyEnum.Wisdom,
-  Arcana = AbilitiyEnum.Intelligence,
-  Athletics = AbilitiyEnum.Strength,
-  Deception = AbilitiyEnum.Charisma,
-  History = AbilitiyEnum.Intelligence,
-  Insight = AbilitiyEnum.Wisdom,
-  Intimidation = AbilitiyEnum.Charisma,
-  Investigation = AbilitiyEnum.Intelligence,
-  Medicine = AbilitiyEnum.Wisdom,
-  Nature = AbilitiyEnum.Intelligence,
-  Perception = AbilitiyEnum.Wisdom,
-  Performance = AbilitiyEnum.Charisma,
-  Persuasion = AbilitiyEnum.Charisma,
-  Religion = AbilitiyEnum.Intelligence,
-  SleightOfHand = AbilitiyEnum.Dexterity,
-  Stealth = AbilitiyEnum.Dexterity,
-  Survival = AbilitiyEnum.Wisdom,
+  Acrobatics = AbilityEnum.Dexterity,
+  AnimalHandling = AbilityEnum.Wisdom,
+  Arcana = AbilityEnum.Intelligence,
+  Athletics = AbilityEnum.Strength,
+  Deception = AbilityEnum.Charisma,
+  History = AbilityEnum.Intelligence,
+  Insight = AbilityEnum.Wisdom,
+  Intimidation = AbilityEnum.Charisma,
+  Investigation = AbilityEnum.Intelligence,
+  Medicine = AbilityEnum.Wisdom,
+  Nature = AbilityEnum.Intelligence,
+  Perception = AbilityEnum.Wisdom,
+  Performance = AbilityEnum.Charisma,
+  Persuasion = AbilityEnum.Charisma,
+  Religion = AbilityEnum.Intelligence,
+  SleightOfHand = AbilityEnum.Dexterity,
+  Stealth = AbilityEnum.Dexterity,
+  Survival = AbilityEnum.Wisdom,
 }
 
 export interface IProficiencable {
@@ -70,8 +70,8 @@ export interface IProficiencable {
 }
 
 export class Skill implements IProficiencable {
-  public readonly ability: AbilitiyEnum;
-  public readonly label: AbilitiyEnum;
+  public readonly ability: AbilityEnum;
+  public readonly label: AbilityEnum;
 
   constructor(public type: string, public isProficiencient = false, public isExpertised = false) {
     this.ability = SkillAttributes[type];

@@ -12,6 +12,6 @@ export class Action {
     public readonly title: string,
     public range: string,
     public actionType: ActionType,
-    public getDescription: (character: Character) => string,
+    public getDescription?: (character: Character) => string,
   ) {}
 }

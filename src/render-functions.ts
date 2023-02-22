@@ -1,10 +1,10 @@
-import { AbilitiyEnum, Ability } from './models/ability';
+import { AbilityEnum, Ability } from './models/ability';
 import { Action } from './models/action';
-import { ArcaneTricksterSpellSlots } from './models/arcane-trickster-spellslots';
 import { Character } from './models/character';
-import { ITrait } from './models/race';
+import { AcraneTricksterSpellcasting } from './models/arcane-trickster-spellslots';
 import { IProficiencable, SkillEnum } from './models/skill';
 import { glueUpPrepositions } from './prepositions';
+
 
 export function renderAbility(character: Character, ability: Ability) {
   const skills = Array.from(character.skills.values()).filter((skill) => skill.ability === ability.type);
@@ -25,7 +25,7 @@ export function renderAbility(character: Character, ability: Ability) {
 
   const ability__modifierNode = document.createElement('div');
   ability__modifierNode.classList.add('ability__modifier');
-  const abilitiyModifier = character.getAbilityModifier(AbilitiyEnum[ability.type]);
+  const abilitiyModifier = character.getAbilityModifier(AbilityEnum[ability.type]);
   ability__modifierNode.textContent = abilitiyModifier.toString();
 
   const ability__dependantsNode = document.createElement('div');
@@ -33,7 +33,7 @@ export function renderAbility(character: Character, ability: Ability) {
   ability__dependantsNode.style.height = `${16 * (skills.length + 1)}px`;
 
   const savingThrowsProficiencyModifier = ability.isSavingThrowsProficiency ? character.proficiency : 0;
-  const savingThrowsModifier = abilitiyModifier + savingThrowsProficiencyModifier;
+  const savingThrowsModifier = abilitiyModifier + savingThrowsProficiencyModifier + ability.savingThrowBonus;
   ability__dependantsNode.appendChild(
     renderProficiencable(
       character,
@@ -133,18 +133,19 @@ export function renderAction(action: Action, character: Character) {
   const actionLabelNode = document.createElement('div');
   actionLabelNode.classList.add('action__label');
   actionLabelNode.textContent = action.title;
+  actionNode.appendChild(actionLabelNode);
 
   const actionRangeNode = document.createElement('div');
   actionRangeNode.classList.add('action__range');
   actionRangeNode.textContent = action.range;
-
-  const actionDetailsNode = document.createElement('div');
-  actionDetailsNode.classList.add('action__details');
-  actionDetailsNode.textContent = action.getDescription(character);
-
-  actionNode.appendChild(actionLabelNode);
   actionNode.appendChild(actionRangeNode);
-  actionNode.appendChild(actionDetailsNode);
+
+  if (typeof action.getDescription === 'function') {
+    const actionDetailsNode = document.createElement('div');
+    actionDetailsNode.classList.add('action__details');
+    actionDetailsNode.innerHTML = action.getDescription(character);
+    actionNode.appendChild(actionDetailsNode);
+  }
 
   return actionNode;
 }
@@ -172,7 +173,7 @@ export function renderCharacter(character: Character) {
   document.querySelector('[data-alignment]').textContent = character.alignment;
   document.querySelector('[data-archetype]').textContent = character.archetype;
   document.querySelector('[data-other-proficiencies]').textContent = character.proficiencies.join(', ');
-  document.querySelector('[data-equipment]').textContent = character.equipment;
+  document.querySelector('[data-equipment]').innerHTML = character.equipment;
   document.querySelector('[data-race]').textContent = character.raceTitle;
 
   document.querySelector('[data-proficiency]').textContent = character.proficiency.toString();
@@ -184,42 +185,12 @@ export function renderCharacter(character: Character) {
   (document.querySelector('[data-hit-die-count]') as HTMLElement).dataset.resourceBoxes = character.level.toString();
   document.querySelector('[data-speed]').textContent = character.speed.toString();
   document.querySelector('[data-initiative]').textContent = character.initiative.toString();
-  document.querySelectorAll('[data-attack-dex]').forEach((node) => {
-    node.textContent = character.attackDex.toString();
-  });
   document.querySelectorAll('[data-dex-mod]').forEach((node) => {
     node.textContent = character.dexMod.toString();
   });
   document.querySelectorAll('[data-int-mod]').forEach((node) => {
     node.textContent = character.intMod.toString();
   });
-  const spellSlotsNode = document.querySelector('[data-spell-slots]');
-  if (character.level >= 3) {
-    document.body.classList.add('trickster');
-    const spellSlots = ArcaneTricksterSpellSlots[character.level.toString()];
-    const { '1': slots1, '2': slots2, '3': slots3, '4': slots4 } = spellSlots;
-    if (slots1) {
-      spellSlotsNode.appendChild(renderResourceGroup({ label: '1', value: slots1 }));
-    }
-    if (slots2) {
-      spellSlotsNode.appendChild(renderResourceGroup({ label: '2', value: slots2 }));
-    }
-    if (slots3) {
-      spellSlotsNode.appendChild(renderResourceGroup({ label: '3', value: slots3 }));
-    }
-    if (slots4) {
-      spellSlotsNode.appendChild(renderResourceGroup({ label: '4', value: slots4 }));
-    }
-  }
-  if (character.level >= 4) {
-    document.body.classList.add('trickster-4');
-  }
-  if (character.level >= 7) {
-    document.body.classList.add('shadow-blade');
-  }
-  if (character.isHaveLongbow) {
-    document.body.classList.add('longbow');
-  }
 
   const resourceNodes = document.querySelectorAll('[data-resource-boxes]');
   resourceNodes.forEach((resourceNode) => {
@@ -235,3 +206,4 @@ export function renderCharacter(character: Character) {
     document.querySelector('[data-actions]').appendChild(renderAction(action, character));
   })
 }
+
