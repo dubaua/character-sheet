@@ -3,8 +3,8 @@
 h1 {
   margin-top: 5px;
   margin-bottom: 7px;
-  padding-bottom: 1.5px;
-  border-bottom: 1.5px solid #000;
+  padding-bottom: 1.667px;
+  border-bottom: 1.5px solid #000; // the fuck it rendered as 1.33
   font-size: 12px;
   line-height: 12px;
   font-weight: 500;
@@ -22,7 +22,7 @@ h1 {
     font-weight: 400;
     margin-top: 9px;
     margin-bottom: 7px;
-    padding-bottom: 1.5px;
+    padding-bottom: 1.667px;
   }
   .archetype:not(:empty):after {
     content: ',';

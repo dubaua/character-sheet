@@ -2,6 +2,7 @@ import { AbilityEnum, Ability } from './ability';
 import { Action } from './action';
 import { Race } from './race';
 import { Skill, SkillEnum } from './skill';
+import { Spell } from './spell';
 
 export class Character {
   public abilities = new Map<AbilityEnum, Ability>();
@@ -9,15 +10,18 @@ export class Character {
   public level = 1;
   public armor = 10;
   public speed = 30;
-  public hitDie = 6;
+  public hitDie = 8;
   public alignment = 'Neutral';
   public archetype = '';
   public hitLevelUpRolls: number[] = [];
+  public hpBonus = 0;
   public isHaveLongbow = false;
   public proficiencies: string[] = [];
   public equipment = '';
   public race: Race;
   public actions = new Map<string, Action>();
+  public weaponEnchantment = 0;
+  public spells: Spell[] = [];
 
   constructor(public name: string, public className: string, public racename: string, public subracename = '') {
     this.initAbilities();
@@ -45,6 +49,10 @@ export class Character {
     this.actions.set(action.title, action);
   }
 
+  public addSpell(spell: Spell) {
+    this.spells.push(spell);
+  }
+
   public getAbilityModifier(name: AbilityEnum): number {
     return this.abilities.get(name).modifier;
   }
@@ -62,7 +70,7 @@ export class Character {
   }
 
   public get hp(): number {
-    return this.hitDie + this.conMod + this.hitLevelUpRolls.reduce((a, c) => a + c + this.conMod, 0);
+    return this.hitDie + this.conMod + this.hitLevelUpRolls.reduce((a, c) => a + c + this.conMod, 0) + this.hpBonus;
   }
 
   public get proficiency(): number {

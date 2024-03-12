@@ -1,9 +1,10 @@
-import { AbilityEnum, Ability } from './models/ability';
-import { Action } from './models/action';
+import { AbilityEnum, Ability, AbilityTitles } from './models/ability';
+import { Action, ActionTitles, ActionType } from './models/action';
 import { Character } from './models/character';
 import { AcraneTricksterSpellcasting } from './models/arcane-trickster-spellslots';
 import { IProficiencable, SkillEnum } from './models/skill';
 import { glueUpPrepositions } from './prepositions';
+import { Spell } from './models/spell';
 
 
 export function renderAbility(character: Character, ability: Ability) {
@@ -17,7 +18,7 @@ export function renderAbility(character: Character, ability: Ability) {
 
   const ability__nameNode = document.createElement('div');
   ability__nameNode.classList.add('ability__name');
-  ability__nameNode.textContent = ability.type;
+  ability__nameNode.textContent = ability.label;
 
   const ability__valueNode = document.createElement('div');
   ability__valueNode.classList.add('ability__value');
@@ -39,7 +40,7 @@ export function renderAbility(character: Character, ability: Ability) {
       character,
       {
         type: 'Saving Throws',
-        label: 'Saving Throws',
+        label: 'Спасброски',
         isProficiencient: ability.isSavingThrowsProficiency,
         isExpertised: false,
       },
@@ -135,6 +136,13 @@ export function renderAction(action: Action, character: Character) {
   actionLabelNode.textContent = action.title;
   actionNode.appendChild(actionLabelNode);
 
+  if (action.actionType !== ActionType.Action) {
+    const actionTypeNode = document.createElement('div');
+    actionTypeNode.classList.add('action__type');
+    actionTypeNode.textContent = action.typeLabel;
+    actionLabelNode.appendChild(actionTypeNode);
+  }
+
   const actionRangeNode = document.createElement('div');
   actionRangeNode.classList.add('action__range');
   actionRangeNode.textContent = action.range;
@@ -150,12 +158,40 @@ export function renderAction(action: Action, character: Character) {
   return actionNode;
 }
 
-export function renderCharacter(character: Character) {
-  if (character?.race?.traits) {
-    character.race.traits.forEach((traitDescription, trainName) => {
-      document.querySelector('[data-race-traits]').appendChild(renderRaceTrait(trainName, traitDescription));
-    });
+export function renderSpell(spell: Spell, character: Character) {
+  const spellNode = document.createElement('div');
+  spellNode.classList.add('spell');
+  spellNode.classList.add('sheet__column');
+
+  const level = spell.level === 0 ? 'Заговор' : `${spell.level} уровень`;
+  spellNode.innerHTML = `<h1>${spell.title}</h1>`;
+  spellNode.innerHTML += `<h2 class="spell__level">${level}, ${spell.school}</h2>`;
+  spellNode.innerHTML += `<div class="spell__detail"><strong>Время накладывания</strong>: ${spell.actionType}</div>
+<div class="spell__detail"><strong>Дистанция</strong>: ${spell.distance}</div>
+<div class="spell__detail"><strong>Компоненты</strong>: ${spell.components}</div>
+<div class="spell__detail"><strong>Длительность</strong>: ${spell.duration}</div>
+<div class="spell__detail"><strong>Классы</strong>: ${spell.classes}</div>
+<div class="spell__detail"><strong>Источник</strong>: ${spell.source}</div>
+<div class="spell__description">${spell.description}</div>
+`;
+
+  if (spell.vocal) {
+    spellNode.innerHTML += `<h2 class="spell__vocal">${spell.vocal.join(', ')}</h2>`
   }
+
+  if (spell.somatic) {
+    spellNode.innerHTML += `<h2 class="spell__somatic">${spell.somatic}</h2>`
+  }
+
+  return spellNode;
+}
+
+export function renderCharacter(character: Character) {
+  // if (character?.race?.traits) {
+  //   character.race.traits.forEach((traitDescription, trainName) => {
+  //     document.querySelector('[data-race-traits]').appendChild(renderRaceTrait(trainName, traitDescription));
+  //   });
+  // }
 
   const abilitiesNode = document.querySelector('[data-abilities]');
   if (abilitiesNode) {
@@ -174,7 +210,7 @@ export function renderCharacter(character: Character) {
   document.querySelector('[data-archetype]').textContent = character.archetype;
   document.querySelector('[data-other-proficiencies]').textContent = character.proficiencies.join(', ');
   document.querySelector('[data-equipment]').innerHTML = character.equipment;
-  document.querySelector('[data-race]').textContent = character.raceTitle;
+  // document.querySelector('[data-race]').textContent = character.raceTitle;
 
   document.querySelector('[data-proficiency]').textContent = character.proficiency.toString();
   document.querySelector('[data-perception]').textContent = character.passivePerception.toString();
@@ -204,6 +240,10 @@ export function renderCharacter(character: Character) {
 
   character.actions.forEach(action => {
     document.querySelector('[data-actions]').appendChild(renderAction(action, character));
+  })
+
+  character.spells.forEach(spell => {
+    document.querySelector('[data-spells]').appendChild(renderSpell(spell, character));
   })
 }
 

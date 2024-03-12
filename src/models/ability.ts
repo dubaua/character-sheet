@@ -7,6 +7,15 @@ export enum AbilityEnum {
   Charisma = 'Charisma',
 }
 
+export const AbilityTitles = {
+  [AbilityEnum.Strength]: 'Сила',
+  [AbilityEnum.Dexterity]: 'Ловкость',
+  [AbilityEnum.Constitution]: 'Телосложение',
+  [AbilityEnum.Intelligence]: 'Интеллект',
+  [AbilityEnum.Wisdom]: 'Мудрость',
+  [AbilityEnum.Charisma]: 'Харизма',
+}
+
 export class Ability {
   public savingThrowBonus = 0;
   constructor(public type: string, public value: number = 0, public isSavingThrowsProficiency: boolean = false) {}
@@ -28,5 +37,9 @@ export class Ability {
 
   public get modifier(): number {
     return Math.floor((this.value - 10) / 2);
+  }
+
+  public get label(): string {
+    return AbilityTitles[this.type];
   }
 }

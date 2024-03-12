@@ -7,6 +7,13 @@ export enum ActionType {
   Reaction = 'Reaction',
 }
 
+export const ActionTitles = {
+  [ActionType.Action]: 'Действие',
+  [ActionType.BonusAction]: 'Бонусное',
+  [ActionType.FreeAction]: 'Свободное',
+  [ActionType.Reaction]: 'Реакция',
+}
+
 export class Action {
   constructor(
     public readonly title: string,
@@ -14,4 +21,8 @@ export class Action {
     public actionType: ActionType,
     public getDescription?: (character: Character) => string,
   ) {}
+
+  public get typeLabel(): string {
+    return ActionTitles[this.actionType];
+  }
 }

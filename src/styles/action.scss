@@ -11,6 +11,14 @@
     font-weight: 500;
   }
 
+  &__type {
+    margin-left: 0.33em;
+    font-size: 7px;
+    line-height: 8px;
+    display: inline;
+    font-weight: normal;
+  }
+
   &__range {
     margin-left: auto;
   }

@@ -1,30 +1,33 @@
 @import './variables.scss';
 
 .spell {
-  margin-top: 16px;
-  margin-bottom: 10px;
-  &__item {
-    display: flex;
-    margin-top: 4px;
-    font-size: 8px;
-    line-height: 12px;
-  } 
-
-  &__label {
-    font-weight: 500;
-  }
+  font-size: 6.2px;
+  line-height: 8px;
+  margin-bottom: 7px;
 
   &__level {
-    &:not(:empty) {
-      &:before {
-        content: '–';
-        margin-left: 0.38em;
-        margin-right: 0.38em;
-      }
-    }
+    margin-top: 0;
+    margin-bottom: 2px;
   }
 
-  &__note {
-    margin-left: auto;
+  &__detail {
+    // margin-top: 4px;
+  }
+
+  &__description {
+    margin-top: 4px;
+    white-space: pre-line;
+    margin-bottom: 3px;
+  }
+
+  &__vocal {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  &__somatic {
+    font-size: 6.2px;
+    line-height: 8px;
+    font-weight: normal;
   }
 }

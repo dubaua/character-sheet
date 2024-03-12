@@ -3,6 +3,7 @@
 
 .sheet {
   width: $paper-width;
+  height: $paper-height;
   margin: 10mm;
   padding: 12px $paper-field;
   box-shadow: 0 5px 15px 5px rgb(183 168 116 / 18%);
@@ -30,6 +31,11 @@
     background-repeat: repeat-y;
     @media print {
       background: none;
+    }
+    &--spell {
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: flex-start;
     }
   }
 
