@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "parcel index.html --open",
     "bleak": "parcel bleak.html --open",
+    "socrates": "parcel socrates.html --open",
     "triss": "parcel triss.html --open"
   }
 }
