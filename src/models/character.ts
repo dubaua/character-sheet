@@ -22,6 +22,7 @@ export class Character {
   public actions = new Map<string, Action>();
   public weaponEnchantment = 0;
   public spells: Spell[] = [];
+  public initiativeModifier = 0;
 
   constructor(public name: string, public className: string, public racename: string, public subracename = '') {
     this.initAbilities();
@@ -60,9 +61,10 @@ export class Character {
   public getSkillModifier(name: SkillEnum): number {
     const skill = this.skills.get(name);
     const abilityModifier = this.getAbilityModifier(skill.ability);
-    const proficiencyModifier = skill.isProficiencient ? this.proficiency : 0;
-    const expertiseModifier = skill.isExpertised ? this.proficiency : 0;
-    return abilityModifier + proficiencyModifier + expertiseModifier;
+    const proficiencyModifier = skill?.isProficiencient ? this.proficiency : 0;
+    const expertiseModifier = skill?.isExpertised ? this.proficiency : 0;
+    const bonus = skill?.bonus ?? 0;
+    return abilityModifier + proficiencyModifier + expertiseModifier + bonus;
   }
 
   public get raceTitle(): string {
@@ -70,23 +72,23 @@ export class Character {
   }
 
   public get hp(): number {
-    return this.hitDie + this.conMod + this.hitLevelUpRolls.reduce((a, c) => a + c + this.conMod, 0) + this.hpBonus;
+    const levelUpHp = this.hitLevelUpRolls.length 
+      ? this.hitLevelUpRolls.reduce((a, c) => a + c + this.conMod, 0)
+      : (this.level - 1) * (this.hitDie / 2 + 1 + this.conMod);
+    return this.hitDie + this.conMod + levelUpHp + this.hpBonus;
   }
 
   public get proficiency(): number {
     return Math.floor((this.level - 1) / 4) + 2;
   }
 
-  public get passivePerception(): number {
-    return 10 + this.getSkillModifier(SkillEnum.Perception);
-  }
-
-  public get passiveInsight(): number {
-    return 10 + this.getSkillModifier(SkillEnum.Insight);
+  public getPassiveSkill(skillName: SkillEnum): number {
+    const skill = this.skills.get(skillName);
+    return 10 + this.getSkillModifier(skillName) + skill!.passiveBonus;
   }
 
   public get initiative(): number {
-    return this.dexMod;
+    return this.dexMod + this.initiativeModifier;
   }
 
   public get strMod(): number {

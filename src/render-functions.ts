@@ -203,25 +203,26 @@ export function renderCharacter(character: Character) {
       });
   }
 
-  document.querySelector('[data-name]').textContent = character.name;
-  document.querySelector('[data-class]').textContent = character.className;
-  document.querySelector('[data-level]').textContent = character.level.toString();
-  document.querySelector('[data-alignment]').textContent = character.alignment;
-  document.querySelector('[data-archetype]').textContent = character.archetype;
-  document.querySelector('[data-other-proficiencies]').textContent = character.proficiencies.join(', ');
+  document.querySelector('[data-name]')?.textContent = character.name;
+  document.querySelector('[data-class]')?.textContent = character.className;
+  document.querySelector('[data-level]')?.textContent = character.level.toString();
+  document.querySelector('[data-alignment]')?.textContent = character.alignment;
+  document.querySelector('[data-archetype]')?.textContent = character.archetype;
+  document.querySelector('[data-other-proficiencies]')?.textContent = character.proficiencies.join(', ');
   document.querySelector('[data-equipment]').innerHTML = character.equipment;
-  // document.querySelector('[data-race]').textContent = character.raceTitle;
+  // document.querySelector('[data-race]')?.textContent = character.raceTitle;
 
-  document.querySelector('[data-proficiency]').textContent = character.proficiency.toString();
-  document.querySelector('[data-perception]').textContent = character.passivePerception.toString();
-  document.querySelector('[data-insight]').textContent = character.passiveInsight.toString();
-  document.querySelector('[data-armor]').textContent = character.armor.toString();
-  document.querySelector('[data-hp]').textContent = character.hp.toString();
-  document.querySelector('[data-hit-die]').textContent = character.hitDie.toString();
-  (document.querySelector('[data-hit-die-count]') as HTMLElement).dataset.resourceBoxes = character.level.toString();
-  document.querySelector('[data-speed]').textContent = character.speed.toString();
-  document.querySelector('[data-initiative]').textContent = character.initiative.toString();
-  document.querySelectorAll('[data-dex-mod]').forEach((node) => {
+  document.querySelector('[data-proficiency]')?.textContent = character.proficiency.toString();
+  document.querySelector('[data-perception]')?.textContent = character.getPassiveSkill(SkillEnum.Perception).toString();
+  document.querySelector('[data-insight]')?.textContent = character.getPassiveSkill(SkillEnum.Insight).toString();
+  document.querySelector('[data-investigation]')?.textContent = character.getPassiveSkill(SkillEnum.Investigation).toString();
+  document.querySelector('[data-armor]')?.textContent = character.armor.toString();
+  document.querySelector('[data-hp]')?.textContent = character.hp.toString();
+  document.querySelector('[data-hit-die]')?.textContent = character.hitDie.toString();
+  (document.querySelector('[data-hit-die-count]') as HTMLElement)?.dataset.resourceBoxes = character.level.toString();
+  document.querySelector('[data-speed]')?.textContent = character.speed.toString();
+  document.querySelector('[data-initiative]')?.textContent = character.initiative.toString();
+  document.querySelectorAll('[data-dex-mod]')?.forEach((node) => {
     node.textContent = character.dexMod.toString();
   });
   document.querySelectorAll('[data-int-mod]').forEach((node) => {
@@ -230,7 +231,7 @@ export function renderCharacter(character: Character) {
 
   const resourceNodes = document.querySelectorAll('[data-resource-boxes]');
   resourceNodes.forEach((resourceNode) => {
-    const count = parseInt((resourceNode as HTMLElement).dataset.resourceBoxes);
+    const count = parseInt((resourceNode as HTMLElement)?.dataset.resourceBoxes);
     for (let i = 0; i < count; i++) {
       const boxNode = document.createElement('div');
       boxNode.classList.add('resource__box');

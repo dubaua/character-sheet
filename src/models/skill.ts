@@ -68,11 +68,14 @@ export interface IProficiencable {
   label: string;
   isProficiencient: boolean;
   isExpertised: boolean;
+  bonus: number;
 }
 
 export class Skill implements IProficiencable {
   public readonly ability: AbilityEnum;
   public readonly label: AbilityEnum;
+  public bonus = 0;
+  public passiveBonus = 0;
 
   constructor(public type: string, public isProficiencient = false, public isExpertised = false) {
     this.ability = SkillAttributes[type];
@@ -86,6 +89,16 @@ export class Skill implements IProficiencable {
 
   public setExpertise(value: boolean) {
     this.isExpertised = value;
+    return this;
+  }
+
+  public setBonus(value: number) {
+    this.bonus = value;
+    return this;
+  }
+
+  public setPassiveBonus(value: number) {
+    this.passiveBonus = value;
     return this;
   }
 }
