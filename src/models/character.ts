@@ -23,6 +23,9 @@ export class Character {
   public weaponEnchantment = 0;
   public spells: Spell[] = [];
   public initiativeModifier = 0;
+  public skillCheckModifier = 0;
+  public savingThrowsModifier = 0;
+  public isJackOfAllTrades = false;
 
   constructor(public name: string, public className: string, public racename: string, public subracename = '') {
     this.initAbilities();
@@ -64,7 +67,18 @@ export class Character {
     const proficiencyModifier = skill?.isProficiencient ? this.proficiency : 0;
     const expertiseModifier = skill?.isExpertised ? this.proficiency : 0;
     const bonus = skill?.bonus ?? 0;
-    return abilityModifier + proficiencyModifier + expertiseModifier + bonus;
+    const jackOfAllTradesBonus = skill?.isProficiencient ? 0 : Math.floor(this.proficiency / 2);
+    console.log(name, { abilityModifier,
+      proficiencyModifier,
+      expertiseModifier,
+      bonus,
+      jackOfAllTradesBonus,
+      totalSkillCheckMod: this.skillCheckModifier,
+     });
+    
+    return (
+      abilityModifier + proficiencyModifier + expertiseModifier + bonus + jackOfAllTradesBonus + this.skillCheckModifier
+    );
   }
 
   public get raceTitle(): string {
@@ -72,7 +86,7 @@ export class Character {
   }
 
   public get hp(): number {
-    const levelUpHp = this.hitLevelUpRolls.length 
+    const levelUpHp = this.hitLevelUpRolls.length
       ? this.hitLevelUpRolls.reduce((a, c) => a + c + this.conMod, 0)
       : (this.level - 1) * (this.hitDie / 2 + 1 + this.conMod);
     return this.hitDie + this.conMod + levelUpHp + this.hpBonus;
@@ -88,7 +102,8 @@ export class Character {
   }
 
   public get initiative(): number {
-    return this.dexMod + this.initiativeModifier;
+    const jackOfAllTradesBonus = Math.floor(this.proficiency / 2);
+    return this.dexMod + this.initiativeModifier + jackOfAllTradesBonus + this.skillCheckModifier;
   }
 
   public get strMod(): number {

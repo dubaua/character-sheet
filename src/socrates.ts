@@ -46,20 +46,18 @@ character.skills.get(SkillEnum.Investigation)!.setProficiency(true).setPassiveBo
 // Collegue of Knowledge
 character.skills.get(SkillEnum.Acrobatics)!.setProficiency(true);
 character.skills.get(SkillEnum.History)!.setProficiency(true);
-character.skills.get(SkillEnum.Religion)!.setProficiency(true);
+character.skills.get(SkillEnum.SleightOfHand)!.setProficiency(true);
 
 // stone of luck
-for (const key in SkillEnum) {
-  if (Object.prototype.hasOwnProperty.call(SkillEnum, key)) {
-    const skillName = SkillEnum[key];
-    character.skills.get(skillName)!.setBonus(1);
-  }
-}
+character.skillCheckModifier = 1;
+
+// @ts-ignore
+window.socrates = character
 
 // Alert Feat
 character.initiativeModifier = 5;
 
-character.level = 4;
+character.level = 5;
 character.armor = 13 + character.dexMod;
 character.speed = 35;
 character.hitDie = 8;
