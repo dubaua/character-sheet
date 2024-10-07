@@ -4,62 +4,37 @@ import { Character } from './models/character';
 import { SkillEnum } from './models/skill';
 import { renderCharacter } from './render-functions';
 
-/*
-настройки
-камень удачи (+1 к проверкам и спасам)
-кольцо правды (преимущество на прониц)
-Эльфийский плащ (преимущество)
+const character: Character = new Character('Табакси', 'Убийца', 'Satyr');
 
-.. фонарь обнаружения
-*/
+character.abilities.get(AbilityEnum.Strength)!.setValue(14);
+character.abilities.get(AbilityEnum.Dexterity)!.setValue(17).setSavingThrowProficiency(true);
+character.abilities.get(AbilityEnum.Constitution)!.setValue(13);
+character.abilities.get(AbilityEnum.Intelligence)!.setValue(12).setSavingThrowProficiency(true);
+character.abilities.get(AbilityEnum.Wisdom)!.setValue(12);
+character.abilities.get(AbilityEnum.Charisma)!.setValue(8);
 
-const character: Character = new Character('Сократ', 'Бард', 'Satyr');
-
-/*
-11 (3 + 4 + 4 + 3 - 3)
-12 (4 + 6 + 2 + 1 - 1)
-13 (4 + 1 + 6 + 3 - 1)
-15 (1 + 6 + 5 + 4 - 1)
-16 (6 + 5 + 1 + 5 - 1)
-17 (6 + 5 + 4 + 6 - 4)
-*/
-// hp rolls = 18 (7+3+5+3)
-
-// set bonus 1 stone of luck
-character.abilities.get(AbilityEnum.Dexterity)!.setValue(17 + 1).setSavingThrowProficiency(true).setSavingThrowBonus(1);
-character.abilities.get(AbilityEnum.Charisma)!.setValue(16 + 2 + 2).setSavingThrowProficiency(true).setSavingThrowBonus(1); // + 2 Paks blessing
-character.abilities.get(AbilityEnum.Intelligence)!.setValue(15 + 1).setSavingThrowBonus(1); // feat Observant
-character.abilities.get(AbilityEnum.Constitution)!.setValue(13).setSavingThrowBonus(1);
-character.abilities.get(AbilityEnum.Wisdom)!.setValue(12).setSavingThrowBonus(1);
-character.abilities.get(AbilityEnum.Strength)!.setValue(11).setSavingThrowBonus(1);
-
-// satyr
-character.skills.get(SkillEnum.Performance)!.setProficiency(true);
-character.skills.get(SkillEnum.Persuasion)!.setProficiency(true);
-// background
-character.skills.get(SkillEnum.Stealth)!.setProficiency(true).setExpertise(true);
-character.skills.get(SkillEnum.Perception)!.setProficiency(true).setExpertise(true).setPassiveBonus(5); // feat Observant
-// Bard
-character.skills.get(SkillEnum.Deception)!.setProficiency(true);
-character.skills.get(SkillEnum.Insight)!.setProficiency(true);
-character.skills.get(SkillEnum.Investigation)!.setProficiency(true).setPassiveBonus(5); // feat Observant
-// Collegue of Knowledge
-character.skills.get(SkillEnum.Acrobatics)!.setProficiency(true);
-character.skills.get(SkillEnum.History)!.setProficiency(true);
+// преступник
 character.skills.get(SkillEnum.SleightOfHand)!.setProficiency(true);
-
-// stone of luck
-character.skillCheckModifier = 1;
+character.skills.get(SkillEnum.Stealth)!.setProficiency(true).setExpertise(true);
+// черта бдительный и воровские инструменты
+// плут
+character.skills.get(SkillEnum.Acrobatics)!.setProficiency(true);
+character.skills.get(SkillEnum.Athletics)!.setProficiency(true).setExpertise(true);
+character.skills.get(SkillEnum.Insight)!.setProficiency(true);
+character.skills.get(SkillEnum.Investigation)!.setProficiency(true);
+// tabaxi
+character.skills.get(SkillEnum.Stealth)!.setProficiency(true);
+character.skills.get(SkillEnum.Perception)!.setProficiency(true);
 
 // @ts-ignore
 window.socrates = character
 
 // Alert Feat
-character.initiativeModifier = 5;
+character.initiativeModifier = character.proficiency;
 
-character.level = 7;
+character.level = 3;
 character.armor = 13 + character.dexMod;
-character.speed = 35;
+character.speed = 30;
 character.hitDie = 8;
 character.hitLevelUpRolls = [];
 character.hpBonus = 0;
@@ -87,59 +62,15 @@ character.addAction(
     return 'Эльфийский плащ. Пока вы носите этот плащ с накинутым капюшоном, проверки Мудрости (Внимательность), совершённые чтобы увидеть вас, совершаются с помехой, а вы совершаете с преимуществом проверки Ловкости (Скрытность)';
   }),
 );
-// character.addAction(
-//   new Action('Большой Меч Договора Сразмаху', '', ActionType.Action, (character) => {
-//     const { chaMod, weaponEnchantment, proficiency } = character;
-//     const attack = chaMod + proficiency;
-//     return `+${attack + weaponEnchantment - 5} КД, d6+${chaMod + weaponEnchantment + 10 + 6} режущий + Кара ${
-//       1 + 4
-//     }d8 силовой`;
-//   }),
-// );
-// character.addAction(
-//   new Action('Мистический Заряд × 2', '120', ActionType.Action, (character) => {
-//     const attack = character.chaMod + character.proficiency;
-//     return `+${attack + 2} КД, d10+${character.chaMod + 2} силовой`;
-//   }),
-// );
-// character.addAction(
-//   new Action('Волшебная рука', '30', ActionType.Action, (character) => {
-//     return `1 минута магическая рука помощница`;
-//   }),
-// );
-// character.addAction(
-//   new Action('Проклятье Хексблейда', '30', ActionType.BonusAction, (character) => {
-//     return `Crit on 19, 20; ${character.proficiency} bonus damage on hit; ${
-//       character.level + character.chaMod
-//     } heal on kill`;
-//   }),
-// );
-// character.addAction(
-//   new Action('Щит', 'На себя', ActionType.Reaction, (character) => {
-//     return `Бонус 5 КД до начала своего следующего хода`;
-//   }),
-// );
-// character.addAction(
-//   new Action('Туманный шаг', 'На себя', ActionType.BonusAction, (character) => {
-//     return `Окутавшись серебристым туманом, вы телепортируетесь на 30 футов в свободное пространство, видимое вами.`;
-//   }),
-// );
 
 character.proficiencies = [
   'Легкая броня',
-  'Простое оружие',
-  'Длинные мечи',
-  'Короткие мечи',
-  'Рапиры',
-  'Ручные Арбалеты',
-  'Лиры',
-  'Виолы',
-  'Лютни',
-  'Волынки',
+  'Простое оружие и воинское оружие со свойством легкое или фехтовальное',
   'Воровские инструменты',
-  'Набор для фальсификации',
+  'Набор для грима',
+  'Набор отравителя',
 ];
-
+ 
 character.equipment = `
 Клепаный кожаный доспех, надетый под отличную одежду:
 старый дорожный плащ с откидными бортами и поясом, застегивающийся на причудливые бронзовые пуговицы, в виде скарабеев.<br>

@@ -11,6 +11,7 @@
     "dev": "parcel index.html --open",
     "bleak": "parcel bleak.html --open",
     "socrates": "parcel socrates.html --open",
+    "paw": "parcel velvet-paw.html --open",
     "triss": "parcel triss.html --open"
   }
 }
