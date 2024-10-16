@@ -67,7 +67,7 @@ export class Character {
     const proficiencyModifier = skill?.isProficiencient ? this.proficiency : 0;
     const expertiseModifier = skill?.isExpertised ? this.proficiency : 0;
     const bonus = skill?.bonus ?? 0;
-    const jackOfAllTradesBonus = skill?.isProficiencient ? 0 : Math.floor(this.proficiency / 2);
+    const jackOfAllTradesBonus = 0; //skill?.isProficiencient ? 0 : Math.floor(this.proficiency / 2);
     console.log(name, { abilityModifier,
       proficiencyModifier,
       expertiseModifier,
