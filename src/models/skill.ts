@@ -69,6 +69,7 @@ export interface IProficiencable {
   isProficiencient: boolean;
   isExpertised: boolean;
   bonus: number;
+  passiveBonus: number;
 }
 
 export class Skill implements IProficiencable {

@@ -8,6 +8,13 @@
   line-height: 16px;
   padding-top: 1px;
 
+  &__bonus {
+    margin-left: auto;
+    margin-right: 6px;
+    font-feature-settings: "tnum" on;
+    font-weight: 400;
+  }
+
   &__modifier {
     position: relative;
     width: 16px;

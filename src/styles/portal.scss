@@ -1,0 +1,134 @@
+.portal-frame,
+.spiral {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.flash {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: red;
+  transform: translate(-50%, 0);
+  animation: flash 1s forwards ease-in infinite;
+}
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.flash:nth-child(4n+1) { animation-delay: 0s;}
+.flash:nth-child(4n+2) { animation-delay: 0.75s;}
+.flash:nth-child(4n+3) { animation-delay: 0.5s;}
+.flash:nth-child(4n)   { animation-delay: 0.25s;}
+.portal-flash-frame {
+  position: absolute;
+  width: 483px;
+  height: 754px;
+  left: 140px;
+  top: 72px;
+  overflow: hidden;
+}
+.flash-1 {
+  top: 727px;
+  left: 61px;
+}
+.flash-2 {
+  top: 727px;
+  left: 151px;
+}
+.flash-3 {
+  top: 727px;
+  left: 241px;
+}
+.flash-4 {
+  top: 727px;
+  left: 331px;
+}
+.flash-5 {
+  top: 727px;
+  left: 421px;
+}
+.flash-6 {
+  top: 662px;
+  left: 484px;
+}
+.flash-7 {
+  top: 572px;
+  left: 484px;
+}
+.flash-8 {
+  top: 482px;
+  left: 484px;
+}
+.flash-9 {
+  top: 392px;
+  left: 484px;
+}
+.flash-10 {
+  top: 302px;
+  left: 484px;
+}
+.flash-11 {
+  top: 212px;
+  left: 484px;
+}
+.flash-12 {
+  top: 123px;
+  left: 461px;
+}
+.flash-13 {
+  top: 44px;
+  left: 411px;
+}
+.flash-14 {
+  top: -3px;
+  left: 333px;
+}
+.flash-15 {
+  top: -23px;
+  left: 242px;
+}
+.flash-16 {
+  top: -3px;
+  left: 151px;
+}
+.flash-17 {
+  top: 44px;
+  left: 73px;
+}
+.flash-18 {
+  top: 123px;
+  left: 23px;
+}
+.flash-19 {
+  top: 212px;
+  left: 0;
+}
+.flash-20 {
+  top: 302px;
+  left: 0;
+}
+.flash-21 {
+  top: 392px;
+  left: 0;
+}
+.flash-22 {
+  top: 482px;
+  left: 0;
+}
+.flash-23 {
+  top: 572px;
+  left: 0;
+}
+.flash-24 {
+  top: 662px;
+  left: 0;
+}

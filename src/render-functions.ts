@@ -86,8 +86,15 @@ export function renderProficiencable(character: Character, skill: IProficiencabl
   if (skill.isExpertised) {
     skill__modifierNode.classList.add('skill__modifier--expertise');
   }
-
+  
   skillNode.appendChild(skill__titleNode);
+  
+  if (skill.passiveBonus && skill.passiveBonus > 0) {
+    const skill__bonusNode = document.createElement('div');
+    skill__bonusNode.textContent = `+${skill.passiveBonus}`;
+    skill__bonusNode.classList.add('skill__bonus');
+    skillNode.appendChild(skill__bonusNode);
+  }
   skillNode.appendChild(skill__modifierNode);
 
   return skillNode;
@@ -164,7 +171,9 @@ export function renderSpell(spell: Spell, character: Character) {
   spellNode.classList.add('sheet__column');
 
   const level = spell.level === 0 ? 'Заговор' : `${spell.level} уровень`;
-  spellNode.innerHTML = `<h1>${spell.title}</h1>`;
+  const renderBadge = badge => `<span class="badges__item">${badge}</span>`
+  const badges = spell.badges ? `<div class="badges__list">${spell.badges.map(renderBadge).join('')}</div>` : ''
+  spellNode.innerHTML = `<h1 class="spell__title badges">${spell.title}${badges}</h1>`;
   spellNode.innerHTML += `<h2 class="spell__level">${level}, ${spell.school}</h2>`;
   spellNode.innerHTML += `<div class="spell__detail"><strong>Время накладывания</strong>: ${spell.actionType}</div>
 <div class="spell__detail"><strong>Дистанция</strong>: ${spell.distance}</div>
@@ -205,7 +214,7 @@ export function renderCharacter(character: Character) {
 
   document.querySelector('[data-name]')?.textContent = character.name;
   document.querySelector('[data-class]')?.textContent = character.className;
-  document.querySelector('[data-level]')?.textContent = character.level.toString();
+  // document.querySelector('[data-level]')?.textContent = character.level.toString();
   document.querySelector('[data-alignment]')?.textContent = character.alignment;
   document.querySelector('[data-archetype]')?.textContent = character.archetype;
   document.querySelector('[data-other-proficiencies]')?.textContent = character.proficiencies.join(', ');

@@ -12,7 +12,9 @@
     "bleak": "parcel bleak.html --open",
     "socrates": "parcel socrates.html --open",
     "paw": "parcel velvet-paw.html --open",
-    "lapa": "parcel lapa.html --open",
+    "blight": "parcel blight.html --open",
+    "portal": "parcel portal.html --open",
+    "alchemy": "parcel alchemy.html --open",
     "triss": "parcel triss.html --open"
   }
 }

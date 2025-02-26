@@ -15,4 +15,5 @@ export type Spell = {
   notes?: string;
   vocal?: string[];
   somatic?: string;
+  badges?: string[];
 };

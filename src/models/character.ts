@@ -102,7 +102,7 @@ export class Character {
   }
 
   public get initiative(): number {
-    const jackOfAllTradesBonus = Math.floor(this.proficiency / 2);
+    const jackOfAllTradesBonus =  this.className === 'Бард' ? Math.floor(this.proficiency / 2) : 0;
     return this.dexMod + this.initiativeModifier + jackOfAllTradesBonus + this.skillCheckModifier;
   }
 
