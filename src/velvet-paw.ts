@@ -7,7 +7,8 @@ import { renderCharacter } from './render-functions';
 const character: Character = new Character('Бархатная Лапа', 'Солблейд', 'Satyr');
 
 character.abilities.get(AbilityEnum.Strength)!.setValue(13).setSavingThrowBonus(1);
-character.abilities.get(AbilityEnum.Dexterity)!.setValue(15 + 2 + 1).setSavingThrowProficiency(true).setSavingThrowBonus(1);
+// 2 race, 1 feat, 1 memory dex
+character.abilities.get(AbilityEnum.Dexterity)!.setValue(15 + 2 + 1 + 1).setSavingThrowProficiency(true).setSavingThrowBonus(1);
 character.abilities.get(AbilityEnum.Constitution)!.setValue(12).setSavingThrowBonus(1);
 character.abilities.get(AbilityEnum.Intelligence)!.setValue(13 + 1).setSavingThrowProficiency(true).setSavingThrowBonus(1);
 character.abilities.get(AbilityEnum.Wisdom)!.setValue(10).setSavingThrowBonus(1);
@@ -36,11 +37,11 @@ character.skills.get(SkillEnum.Perception)!.setProficiency(true).setExpertise(tr
 // @ts-ignore
 window.socrates = character
 
-character.level = 6;
-character.armor = 12 + character.dexMod + 2 + 1 + 2; // зачарование брони Асмодея, кольцо защиты, щит
+character.level = 8;
+character.armor = 12 + character.dexMod + 1 + 1 + 2; // зачарование брони Асмодея, кольцо защиты, щит
 character.speed = 30;
 character.hitDie = 8;
-character.hitLevelUpRolls = [5,5,5,5,9];
+character.hitLevelUpRolls = [5,5,5,5,9,5,5];
 character.hpBonus = 0;
 character.alignment = 'Хаотичный';
 character.archetype = '';
@@ -53,9 +54,9 @@ character.addAction(
   }),
 );
 character.addAction(
-  new Action('Дроуский Кинжал + 2', 'ближнее', ActionType.Action, (character) => {
+  new Action('Меч Дранкхайма + 2', 'ближнее', ActionType.Action, (character) => {
     const attack = character.dexMod + character.proficiency + 2;
-    return `+${attack} AC, d8+${character.dexMod + 2} колющий, напор`;
+    return `+${attack} AC, d6+${character.dexMod + 2} колющий +d8 огонь, напор`;
   }),
 );
 character.addAction(
