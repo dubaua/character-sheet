@@ -4,72 +4,66 @@ import { Character } from './models/character';
 import { SkillEnum } from './models/skill';
 import { renderCharacter } from './render-functions';
 
-const character: Character = new Character('Хворь', 'Чародей', 'Данмер');
+const character: Character = new Character('Грув Обскэм', 'Волшебник', 'Человек');
 
-character.abilities.get(AbilityEnum.Strength)!.setValue(8);
-character.abilities.get(AbilityEnum.Dexterity)!.setValue(15 + 1);
-character.abilities.get(AbilityEnum.Constitution)!.setValue(14).setSavingThrowProficiency(true);
-character.abilities.get(AbilityEnum.Intelligence)!.setValue(8);
-character.abilities.get(AbilityEnum.Wisdom)!.setValue(10);
-character.abilities
-  .get(AbilityEnum.Charisma)!
-  .setValue(15 + 2 + 1)
-  .setSavingThrowProficiency(true);
+character.abilities.get(AbilityEnum.Strength)!.setValue(16 + 1 + 1); // черта таверный драчун
+character.abilities.get(AbilityEnum.Dexterity)!.setValue(13); // человек
+character.abilities.get(AbilityEnum.Constitution)!.setValue(19); // 12
+character.abilities.get(AbilityEnum.Intelligence)!.setValue(15 + 1).setSavingThrowProficiency(true); // человек
+character.abilities.get(AbilityEnum.Wisdom)!.setValue(8).setSavingThrowProficiency(true);
+character.abilities.get(AbilityEnum.Charisma)!.setValue(10);
 
-// Посвященный в магию и Ритуалист (или затронутый феями), нахуй больше спеллов у сорков их мало.
-/* навыки
-дроу Проницательность, Восприятие или Выживание.
-2 навыка от предыстории скрытность
-2 навыка от класса сорк Магия, Обман, Проницательность, Запугивание, Убеждение или Религия.
 
-инструменты каллиграфа (предыстория)
-посвященный в магию (предыстория) указание, починка, лечящее слово
-ритуал кастер поиск фамильяра и невидимое письмо
- */
-// Backstory
-character.skills.get(SkillEnum.Stealth)!.setProficiency(true);
-character.skills.get(SkillEnum.Deception)!.setProficiency(true);
-// Sorcerer
-character.skills.get(SkillEnum.Arcana)!.setProficiency(true);
-character.skills.get(SkillEnum.Persuasion)!.setProficiency(true);
-// Drow
-character.skills.get(SkillEnum.Perception)!.setProficiency(true);
+character.skills.get(SkillEnum.Investigation)!.setProficiency(true); // класс
+character.skills.get(SkillEnum.Perception)!.setProficiency(true); // класс
+character.skills.get(SkillEnum.Athletics)!.setProficiency(true); // бэкстори
+character.skills.get(SkillEnum.Intimidation)!.setProficiency(true); // бэкстори
+character.skills.get(SkillEnum.Acrobatics)!.setProficiency(true); // человек
+character.skills.get(SkillEnum.Performance)!.setProficiency(true); // класс песнь клинка
+
 
 // @ts-ignore
 window.character = character;
 
-character.level = 6;
+character.level = 5;
 character.armor = 13 + character.dexMod; // Mage Armor
 character.speed = 30;
 character.hitDie = 6;
-character.hitLevelUpRolls = [2, 3, 6, 5, 4];
+character.hitLevelUpRolls = [];
 character.hpBonus = 0;
 character.alignment = 'Хаотичный';
 character.archetype = '';
 character.weaponEnchantment = 0;
 
+
 character.addAction(
-  new Action('Всплеск чар', '120', ActionType.Action, (character) => {
-    const attack = character.chaMod + character.proficiency;
-    return `+${attack} AC, 2d8!(${character.chaMod}) не силовой`;
+  new Action('Кастет', 'ближнее', ActionType.Action, (character) => {
+    const attack = character.strMod + character.proficiency;
+    return `+${attack} AC, d4+${character.strMod} дробящий`;
   }),
 );
 character.addAction(
-  new Action('Раскол Разума', '60', ActionType.Action, (character) => {
-    const DC = 8 + character.chaMod + character.proficiency;
-    return `Int ${DC} DC, 2d4 психический`;
-  }),
-);
-character.addAction(
-  new Action('Кинжал', 'ближнее', ActionType.Action, (character) => {
-    const attack = character.dexMod + character.proficiency;
-    return `+${attack} AC, d4+${character.dexMod} колющий`;
+  new Action('Громовой Клинок', 'Магия', ActionType.Action, (character) => {
+    let primaryDamage = '';
+    let moveDamage = 'd8';
+    if (character.level >= 5) {
+      primaryDamage = 'd8 ';
+      moveDamage = '2d8';
+    }
+    if (character.level >= 11) {
+      primaryDamage = '2d8 ';
+      moveDamage = '3d8';
+    }
+    if (character.level >= 17) {
+      primaryDamage = '3d8 ';
+      moveDamage = '4d8';
+    }
+    return `${primaryDamage} гром + при передвижении ${moveDamage} гром`;
   }),
 );
 
 character.proficiencies = [
-  'Простое оружие',
-  'Набор для Маскировки', // предыстория
+  'Кинжалы', 'дротики', 'пращи', 'боевые посохи', 'лёгкие арбалеты'
 ];
 
 /*
@@ -81,18 +75,8 @@ character.proficiencies = [
 свисток
 20 золотых
 */
-character.equipment = `Копье, 2 кинжала, магическая фокусировка, набор исследоватеря подземелий: рюкзак, калтропы, лом, 2 фляги масла, рационы на 10 дней, верёвка, трутницу, 10 факелов и бурдюк, Набор для Маскировки.
-Парадная одежда, Костюм официантки, Костюм паломницы трибунала<br>
-<br>
-<strong>Астральный осколок</strong><br>
-Чудесный предмет, редкий (требуется настройка чародеем)<br>
-Этот кристалл — затвердевший осколок Астрального плана, окутанный серебристым туманом. Действием вы можете прикрепить осколок к Крошечному предмету (например, оружию или ювелирному изделию) или отсоединить его. Он отпадает самостоятельно, если ваша настройка на него заканчивается. Вы можете использовать осколок в качестве заклинательной фокусировки, пока вы несёте или носите его.<br>
-Когда вы используете метамагию для накладывания заклинания, пока несёте или носите осколок, сразу же после накладывания заклинания вы можете телепортироваться в свободное пространство, которое можете видеть в пределах 30 футов.<br>
-<br>
-<strong>Флакон с кровью</strong><br>
-Чудесный предмет, необычный +1<br>
-Чтобы настроиться на этот сосуд, вы должны поместить в него несколько капель своей крови. Сосуд нельзя открыть, пока вы настроены на него. Если ваша настройка на сосуд заканчивается, содержащаяся в нем кровь превращается в пепел. Вы можете использовать флакон в качестве заклинательной фокусировки для ваших заклинаний, пока носите или держите его. Также вы получаете бонус к броскам атаки заклинаний и Сл спасбросков ваших заклинаний чародея. Бонус определяется редкостью флакона.<br>
-Кроме того, когда вы тратите Кость Хитов, чтобы восстановить хиты, пока флакон при вас, вы можете восстановить 5 единиц чародейства. Это свойство флакона не может быть использовано вновь до следующего рассвета.<br>
+character.equipment = `Амулет здоровья, Кастет изготовленный из серебряных монет,
+кожаный плащ с меховым воротником, глаз летучей мыши, проволока медная
 `;
 /* 
 4 первых слота
@@ -126,6 +110,22 @@ character.equipment = `Копье, 2 кинжала, магическая фок
 Понимание языков
 Невидимое Письмо
 */
+character.addSpell({
+  title: 'Починка',
+  vocal: [],
+  somatic: '',
+  level: 0,
+  school: 'преобразование',
+  actionType: '1 минута',
+  distance: 'Касание',
+  components: 'В, С, М (два магнитных камня)',
+  duration: 'Мгновенная',
+  classes: 'бард, жрец, друид, чародей, волшебник',
+  source: "Player's handbook, от черты происхождения",
+  description: `Это заклинание чинит одно повреждение или сломанный участок предмета, которого вы касаетесь, например, сломанную цепочку, две половинки сломанного ключа, порванный плащ или протекающий бурдюк. Если разрыв или слом не превышает 1 фута в любом измерении, то вы чините его, не оставляя следов от предыдущего повреждения.\n\nЭто заклинание может физически починить магический предмет, но не может вернуть ему утраченные магические свойства.`,
+});
+
+
 /*
 character.addSpell({
   title: 'Волшебная рука',

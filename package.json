@@ -13,6 +13,7 @@
     "socrates": "parcel socrates.html --open",
     "paw": "parcel velvet-paw.html --open",
     "blight": "parcel blight.html --open",
+    "obscam": "parcel obscam.html --open",
     "portal": "parcel portal.html --open",
     "alchemy": "parcel alchemy.html --open",
     "triss": "parcel triss.html --open"

@@ -6,13 +6,13 @@ import { renderCharacter } from './render-functions';
 
 const character: Character = new Character('Бархатная Лапа', 'Солблейд', 'Satyr');
 
-character.abilities.get(AbilityEnum.Strength)!.setValue(13).setSavingThrowBonus(1);
-// 2 race, 1 feat, 1 memory dex
-character.abilities.get(AbilityEnum.Dexterity)!.setValue(15 + 2 + 1 + 1).setSavingThrowProficiency(true).setSavingThrowBonus(1);
-character.abilities.get(AbilityEnum.Constitution)!.setValue(12).setSavingThrowBonus(1);
-character.abilities.get(AbilityEnum.Intelligence)!.setValue(13 + 1).setSavingThrowProficiency(true).setSavingThrowBonus(1);
-character.abilities.get(AbilityEnum.Wisdom)!.setValue(10).setSavingThrowBonus(1);
-character.abilities.get(AbilityEnum.Charisma)!.setValue(10).setSavingThrowBonus(1);
+character.abilities.get(AbilityEnum.Strength)!.setValue(13)
+// 2 race, 1 feat, 1 memory dex, 1 feat
+character.abilities.get(AbilityEnum.Dexterity)!.setValue(15 + 2 + 1 + 1 + 1).setSavingThrowProficiency(true).setSavingThrowBonus(1); // от сета
+character.abilities.get(AbilityEnum.Constitution)!.setValue(19)
+character.abilities.get(AbilityEnum.Intelligence)!.setValue(13 + 1).setSavingThrowProficiency(true)
+character.abilities.get(AbilityEnum.Wisdom)!.setValue(10).setSavingThrowBonus(1); // от сета 
+character.abilities.get(AbilityEnum.Charisma)!.setValue(10)
 
 // своя предыстория
 character.skills.get(SkillEnum.SleightOfHand)!.setProficiency(true).setExpertise(true).setPassiveBonus(5);
@@ -29,19 +29,19 @@ character.skills.get(SkillEnum.Arcana)!.setProficiency(true);
 character.skills.get(SkillEnum.Acrobatics)!.setProficiency(true);
 character.skills.get(SkillEnum.Athletics)!.setProficiency(true).setExpertise(true);
 character.skills.get(SkillEnum.Insight)!.setProficiency(true);
-character.skills.get(SkillEnum.Deception)!.setProficiency(true).setExpertise(true); // Броня Асмодея
+character.skills.get(SkillEnum.Deception)!.setProficiency(true)
 // tabaxi
 character.skills.get(SkillEnum.Stealth)!.setProficiency(true).setExpertise(true);
-character.skills.get(SkillEnum.Perception)!.setProficiency(true).setExpertise(true); // Броня Асмодея
+character.skills.get(SkillEnum.Perception)!.setProficiency(true).setExpertise(true);
 
 // @ts-ignore
 window.socrates = character
 
-character.level = 8;
+character.level = 9;
 character.armor = 12 + character.dexMod + 1 + 1 + 2; // зачарование брони Асмодея, кольцо защиты, щит
-character.speed = 30;
+character.speed = 40;
 character.hitDie = 8;
-character.hitLevelUpRolls = [5,5,5,5,9,5,5];
+character.hitLevelUpRolls = [5,5,5,5,9,5,5,5];
 character.hpBonus = 0;
 character.alignment = 'Хаотичный';
 character.archetype = '';
@@ -50,7 +50,7 @@ character.weaponEnchantment = 0;
 
 character.addAction(
   new Action('Скрытая Атака', 'попадание', ActionType.BonusAction, (character) => {
-    return `${Math.floor((character.level - 1) / 2) + 1}d6 с фехтовальным или дальним`;
+    return `${Math.floor((character.level - 1) / 2) + 1 - 1}d6 с фехтовальным или дальним`;
   }),
 );
 character.addAction(
@@ -155,18 +155,24 @@ character.proficiencies = [
 
 */ 
 character.equipment = `4 кинжала, дроуский кинжал +2 (короткий меч), клепаная кожа, воровские инструменты, мастерский набор отравителя (+1d4 к ядам), мастерские алхимические пренадлежности, 20 дротиков, рюкзак, спальник, одежда путешественника, зеркало, духи<br>
-Парадная одежда — красная одежда чужестранки, роскошное вечернее платье в стиле дроу, сине-желтое одеяние заморского ученого<br>
+Парадная одежда — красная одежда чужестранки, роскошное вечернее платье в стиле дроу, сине-желтое одеяние заморского ученого, жестокий кинжал<br>
 <br>
 Тетрадь с договорами<br>
-<strong>Броня Асмодея</strong>, проклепанная броня, требует настройки<br>
-<strong>0 Уровень</strong>. Дарует владение инфернальным языком и компетентность в одном навыке (Восприятие).<br>
-<strong>1 Уровень</strong>. Дарует возможность накладывать заклинания Невидимость и Адское Возмездие. Когда заклинание наложенно с помощью брони, его нельзя накладывать таким образом до конца следующего продолжительного отдыха.<br>
-<strong>2 Уровень</strong>. Броня становится магической бронёй +1. Дарует компетентность в ещё одном навыке (Обман). Дарует 2 заряда Дьявольского Везения, можно перебросить любую проверку навыка. Восстанавливается на длительном отдыхе.<br>
-<strong>3 Уровень</strong>. Броня становится магической бронёй +2. Дарует возможность накладывать заклинание Дьявольский Рывок. Когда заклинание наложенно с помощью брони, его нельзя накладывать таким образом до конца следующего короткого отдыха. Дьявольское везение теперь также позволяет перебрасывать спасброски.<br>
-<br>
-<strong>Перчатки Воровства</strong>, +5 Ловкость рук на вскрытие замков<br>
-<strong>Кольцо Защиты</strong>, требует настройки, дарует +1 к защите и спасброскам<br>
-<strong>Кольцо свободных действий</strong>, требует настройки, Если вы носите это кольцо, труднопроходимая местность не заставляет вас тратить дополнительное перемещение. Кроме того, магия не может ни уменьшить вашу скорость, ни сделать вас парализованным или опутанным.<br>
+Набор Мастера Алхимии<br>
+Набор Мастера Отравителя<br>
+
+<strong>Амулет здоровья</strong>, требует настройки<br>
+Телосложение становится 19<br>
+<strong>Кинжал +2</strong><br>
+Дает дополнительный радиус 30 слепого зрения<br>
+<strong>Капюшон Мастера Ассассина</strong><br>
++1 к спасброскам Ловкости и Мудрости. Бросок, необходимый для крита, уменьшается на 1.<br>
+<strong>Перчатки Мастера Ассассина</strong><br>
+Реролл 1 на кубиках скрытой атаки до 4 в ход. Бросок, необходимый для крита, уменьшается на 1.<br>
+<strong>Брошь Мастера Ассассина</strong><br>
+Переброс d20 на навыках до 4 в день.<br>
+<strong>Малый бонус Мастера Ассассина</strong><br>
+Дополнительное бонусное действие<br>
 `;
 
 character.addSpell({
@@ -217,52 +223,52 @@ character.addSpell({
 Чтобы разоблачить вашу маскировку, существо должно совершить действие поиск для изучения вашего внешнего вида и успешно пройти проверку Интеллект (Анализ) против Сл вашего заклинания.`,
 });
 
-character.addSpell({
-  title: 'Невидимость',
-  vocal: ['nas\'sharm morak'],
-  somatic: 'провести лапой по глазам',
-  level: 2,
-  school: 'иллюзия',
-  actionType: 'Действие',
-  distance: 'Касание',
-  components: 'В, С, М (ресничка в смоле)',
-  duration: 'Концентрация, до 1 часа',
-  classes: 'бард, волшебник, колдун, чародей',
-  source: `Player's handbook`,
-  description: `Существо, которого вы касаетесь, получает
-состояние невидимый до окончания действия заклинания. Заклинание прекращается досрочно сразу после того, как цель совершит атаку, нанесёт урон или наложит заклинание.
-Использование более высокой ячейки. Вы можете выбрать одну дополнительную цель за каждый уровень ячейки заклинания выше 2-го.`,
-});
+// character.addSpell({
+//   title: 'Невидимость',
+//   vocal: ['nas\'sharm morak'],
+//   somatic: 'провести лапой по глазам',
+//   level: 2,
+//   school: 'иллюзия',
+//   actionType: 'Действие',
+//   distance: 'Касание',
+//   components: 'В, С, М (ресничка в смоле)',
+//   duration: 'Концентрация, до 1 часа',
+//   classes: 'бард, волшебник, колдун, чародей',
+//   source: `Player's handbook`,
+//   description: `Существо, которого вы касаетесь, получает
+// состояние невидимый до окончания действия заклинания. Заклинание прекращается досрочно сразу после того, как цель совершит атаку, нанесёт урон или наложит заклинание.
+// Использование более высокой ячейки. Вы можете выбрать одну дополнительную цель за каждый уровень ячейки заклинания выше 2-го.`,
+// });
 
-character.addSpell({
-  title: 'Адское Возмездие',
-  vocal: ['mordakar zan\'shamrrak'],
-  somatic: 'хурма трясущаяся',
-  level: 1,
-  school: 'воплощение',
-  actionType: 'Реакция, которую вы используете в ответ на получение урона от существа, которое вы видите в пределах 60 футов от себя',
-  distance: '60 футов',
-  components: 'В, С',
-  duration: 'Мгновенно',
-  classes: 'колдун',
-  source: `Player's handbook`,
-  description: `Существо, нанесящее вам урон, на мгновение оказывается окружено зелёными огнями. Оно должно совершить спасбросок Ловкости, получая 2к10 урона огнём при провале или половину этого урона при успешном спасброске.
-Использование более высокой ячейки. Урон увеличивается на 1к10 за каждый уровень ячейки заклинаний выше 1.`,
-});
+// character.addSpell({
+//   title: 'Адское Возмездие',
+//   vocal: ['mordakar zan\'shamrrak'],
+//   somatic: 'хурма трясущаяся',
+//   level: 1,
+//   school: 'воплощение',
+//   actionType: 'Реакция, которую вы используете в ответ на получение урона от существа, которое вы видите в пределах 60 футов от себя',
+//   distance: '60 футов',
+//   components: 'В, С',
+//   duration: 'Мгновенно',
+//   classes: 'колдун',
+//   source: `Player's handbook`,
+//   description: `Существо, нанесящее вам урон, на мгновение оказывается окружено зелёными огнями. Оно должно совершить спасбросок Ловкости, получая 2к10 урона огнём при провале или половину этого урона при успешном спасброске.
+// Использование более высокой ячейки. Урон увеличивается на 1к10 за каждый уровень ячейки заклинаний выше 1.`,
+// });
 
-character.addSpell({
-  title: 'Дьявольский Рывок',
-  vocal: ['kash\'marr kazandor'],
-  level: 2,
-  school: 'вызов',
-  actionType: '1 бонусное действие',
-  distance: 'На себя',
-  components: 'В',
-  duration: 'Мгновенно',
-  classes: 'волшебник, колдун, чародей',
-  source: `Мирхат`,
-  description: `Окутавшись серебристым туманом, вы телепортируетесь на расстояние до 30 футов в свободное пространство, видимое вами. В радиусе 30 футов во время телепортации можно атаковать цель и применить к ней Скрытую Атаку, даже, если в этот раунд она была нанесена, однако, нельзя применять Скрытую Атаку на цель, к которой она уже применялась в этот ход.`,
-});
+// character.addSpell({
+//   title: 'Дьявольский Рывок',
+//   vocal: ['kash\'marr kazandor'],
+//   level: 2,
+//   school: 'вызов',
+//   actionType: '1 бонусное действие',
+//   distance: 'На себя',
+//   components: 'В',
+//   duration: 'Мгновенно',
+//   classes: 'волшебник, колдун, чародей',
+//   source: `Мирхат`,
+//   description: `Окутавшись серебристым туманом, вы телепортируетесь на расстояние до 30 футов в свободное пространство, видимое вами. В радиусе 30 футов во время телепортации можно атаковать цель и применить к ней Скрытую Атаку, даже, если в этот раунд она была нанесена, однако, нельзя применять Скрытую Атаку на цель, к которой она уже применялась в этот ход.`,
+// });
 
 renderCharacter(character);
 
